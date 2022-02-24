@@ -32,7 +32,7 @@ class OwnerController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
 
-//        try{
+       try{
 
             $data = $request->except('_token');
 
@@ -52,16 +52,16 @@ class OwnerController extends Controller
                 $file = $request->id_image->hashName();
                 $data['id_image']  = $file;
             }
-            
+
              Owners::create($data);
 
             session()->flash('success', 'Owner added successfully');
 
             return redirect()->route('owner.index');
 
-//        }catch(\Exception $e){
-//            return redirect()->back()->with(['error'=>'there is problem please try again']);
-//        }
+       }catch(\Exception $e){
+           return redirect()->back()->with(['error'=>'there is problem please try again']);
+       }
 
     }
 
@@ -73,12 +73,12 @@ class OwnerController extends Controller
 
     public function edit($id)
     {
-        $student = Student::find($id);
-        $colleges = College::get();
-        if($student){
-            return view('dashboard.students.edit', compact('student','colleges'));
+        $owner = Owners::find($id);
+
+        if($owner){
+            return view('dashboard.owners.edite', compact('owner'));
         }else{
-            return redirect()->back()->with(['error'=>'this student is not found']);
+            return redirect()->back()->with(['error'=>'this owners is not found']);
         }
 
     }
