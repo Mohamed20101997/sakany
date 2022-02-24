@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_files/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Login - Cherry Admin</title>
+    <title>Login - Sakany Admin</title>
 </head>
 <body>
 <section class="material-half-bg">

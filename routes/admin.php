@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>['auth:admin'],'prefix'=>'admin'], function () {
 
     Route::get('/','WelcomeController@index')->name('welcome');
-
     //logout route
     Route::post('logout', 'AuthController@logout')->name('logout');
+
+    Route::resource('owner', 'OwnerController')->except('show');
 
 
 });  /** End of Route Group  */
