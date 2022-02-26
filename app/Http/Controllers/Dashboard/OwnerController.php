@@ -13,8 +13,7 @@ class OwnerController extends Controller
         $owners = Owners::whenSearch(Request()->search)->paginate(5);
         return view('dashboard.owners.index',compact('owners'));
     }
-
-
+    
     public function create()
     {
         return view('dashboard.owners.create');
@@ -26,8 +25,8 @@ class OwnerController extends Controller
             'email'  => 'required|unique:owners,email|email',
             'name'   => 'required',
             'mobile' => 'required',
-            'age'   => 'required|numeric|min:16',
-            'image'   => 'required|image',
+            'age'   => 'required',
+            'image'   => 'image',
             'id_image'   => 'required|image',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -42,15 +41,11 @@ class OwnerController extends Controller
 
 
             if ($request->has('image')) {
-                $request->image->store('/', 'public');
-                $file = $request->image->hashName();
-                $data['image']  = $file;
+                $data['image'] = uploadImage('public_uploads', $request->file('image'));
             }
 
             if ($request->has('id_image')) {
-                $request->id_image->store('/', 'public');
-                $file = $request->id_image->hashName();
-                $data['id_image']  = $file;
+                $data['id_image'] = uploadImage('public_uploads', $request->file('id_image'));
             }
 
              Owners::create($data);
@@ -64,7 +59,6 @@ class OwnerController extends Controller
        }
 
     }
-
 
     public function show($id)
     {
@@ -87,28 +81,47 @@ class OwnerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email' => 'required|email|unique:students,email,'.$id,
-            'name' => 'required',
-            'college_id' =>'required|exists:colleges,id',
+            'email'  => 'required|email|unique:owners,email,'.$id,
+            'name'   => 'required',
+            'mobile' => 'required',
+            'age'   => 'required',
+            'image'   => 'image',
+            'id_image'   => 'image',
             'password' => 'sometimes|confirmed',
         ]);
+
         try{
 
-            $student =  Student::find($request->id);
+            $owner =  Owners::find($id);
 
             $data = $request->except('_token');
 
             if(!empty($data['password'])){
                 $data['password'] = bcrypt($data['password']);
             }else{
-                $data['password'] = $student->password;
+                $data['password'] = $owner->password;
             }
 
-            $student->update($data);
 
-            session()->flash('success', 'Student Updated successfully');
+            if ($request->has('image')) {
+                remove_previous($owner->image);
+                $data['image'] = uploadImage('public_uploads', $request->file('image'));
+            }
 
-            return redirect()->route('student.index');
+            if ($request->has('id_image')) {
+
+
+
+                remove_previous($owner->id_image);
+                $data['id_image'] = uploadImage('public_uploads', $request->file('id_image'));
+            }
+
+
+            $owner->update($data);
+
+            session()->flash('success', 'Owner Updated successfully');
+
+            return redirect()->route('owner.index');
 
         }catch(\Exception $e){
             return redirect()->back()->with(['error'=>'there is problem please try again']);
@@ -119,18 +132,22 @@ class OwnerController extends Controller
     public function destroy($id)
     {
         try{
-            $student =  Student::find($id);
+            $owner =  Owners::find($id);
 
-            if(!$student)
+            if(!$owner)
             {
-                return redirect()->back()->with(['error'=>'student not found']);
+                return redirect()->back()->with(['error'=>'owner not found']);
             }
 
-            $student->delete();
+            remove_previous($owner->image);
 
-            session()->flash('success', 'Student deleted successfully');
+            remove_previous($owner->id_image);
 
-            return redirect()->route('student.index');
+            $owner->delete();
+
+            session()->flash('success', 'Owners deleted successfully');
+
+            return redirect()->route('owner.index');
 
         }catch(\Exception $e){
 

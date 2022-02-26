@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'App\Http\Controllers\Front';
+    protected $namespace = 'App\Http\Controllers';
     protected $dashboard_namespace = 'App\Http\Controllers\Dashboard';
     protected $api_namespace = 'App\Http\Controllers\Api';
 

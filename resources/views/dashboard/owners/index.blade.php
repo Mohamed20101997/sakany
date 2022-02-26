@@ -54,7 +54,15 @@
                                             <td>{{ $owner->email }}</td>
                                             <td>{{ $owner->mobile }}</td>
                                             <td>{{ $owner->age }}</td>
-                                            <td>{{ $owner->image }}</td>
+
+                                            <td>
+                                                @if(!empty($owner->image))
+                                                    <img src="{{image_path($owner->image)}}" width="60px" class="img-thumbnail">
+                                                @else
+                                                    <img src="{{image_path('user.png')}}" width="60px" class="img-thumbnail">
+                                                @endif
+                                            </td>
+
                                             <td>
                                                 <a href="{{ route('owner.edit', $owner->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                 <form method="post" action={{ route('owner.destroy', $owner->id)}} style="display:inline-block">

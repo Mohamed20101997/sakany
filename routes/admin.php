@@ -22,6 +22,8 @@ Route::group(['middleware'=>['auth:admin'],'prefix'=>'admin'], function () {
 
     Route::resource('owner', 'OwnerController')->except('show');
 
+    Route::resource('user', 'UserController')->except('show');
+
 
 });  /** End of Route Group  */
 

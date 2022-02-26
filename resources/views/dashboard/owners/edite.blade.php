@@ -14,7 +14,7 @@
         <div class="col-md-12">
 
             <div class="tile mb4">
-                <form method="POST" action="{{ route('owner.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('owner.update', $owner->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row">
@@ -47,11 +47,11 @@
                                 <label>Phone</label>
                                 <input type="tel" placeholder="Enter the phone number" name="mobile" class="form-control"
                                     required value="{{ old('mobile' , $owner->mobile) }}">
-                                @error('email')
+                                @error('mobile')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>{{-- end of col Email --}}
+                        </div>{{-- end of col mobile --}}
 
 
                     </div> {{-- end of row --}}
@@ -89,7 +89,7 @@
                             {{-- age --}}
                             <div class="form-group">
                                 <label>Age</label>
-                                <input type="number" placeholder="Enter the age number" name="age" class="form-control"
+                                <input type="number" placeholder="Enter the age number" min="16" name="age" class="form-control"
                                     required value="{{ old('age', $owner->age) }}">
                                 @error('age')
                                     <div class="text-danger">{{ $message }}</div>
@@ -105,7 +105,7 @@
                             {{-- Password --}}
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" placeholder="Enter your complexity password" required name="password"
+                                <input type="password" placeholder="Enter your complexity password"  name="password"
                                     class="form-control">
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
@@ -118,7 +118,7 @@
                             <div class="form-group">
                                 <label>Password confirmation</label>
                                 <input type="password" name="password_confirmation" placeholder="Re-enter your password"
-                                    required class="form-control">
+                                     class="form-control">
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -129,7 +129,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>Add</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>Update</button>
                     </div>
                 </form>
 

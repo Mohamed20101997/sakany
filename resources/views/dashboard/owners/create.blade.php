@@ -48,11 +48,11 @@
                                 <label>Phone</label>
                                 <input type="tel" placeholder="Enter the phone number" name="mobile"
                                        class="form-control" required value="{{ old('mobile') }}">
-                                @error('email')
+                                @error('mobile')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
-                        </div>{{-- end of col Email --}}
+                        </div>{{-- end of col mobile --}}
 
 
                     </div> {{-- end of row --}}
@@ -90,8 +90,7 @@
                             {{-- age --}}
                             <div class="form-group">
                                 <label>Age</label>
-                                <input type="number" placeholder="Enter the age number" name="age"
-                                       class="form-control" required value="{{ old('age') }}">
+                                <input type="number" placeholder="Enter the age number" name="age" min="16" class="form-control" required value="{{ old('age') }}">
                                 @error('age')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror

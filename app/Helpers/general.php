@@ -23,15 +23,20 @@ function parent($id){
 
 
 function uploadImage($folder,$image){
-    $image->store('/public', $folder);
+    $image->store('/images', $folder);
     $filename = $image->hashName();
     return  $filename;
  }
 
 
-function remove_previous($folder,$model)
+function remove_previous($image)
  {
-    Storage::disk($folder)->delete($model->image);
+     if(!empty($image)){
+         $image_path = public_path().'/uploads/images/'.$image;
+         if(file_exists($image_path)){
+             unlink($image_path);
+         }
+     }
 
  } //end of remove_previous function
 
@@ -45,7 +50,7 @@ function remove_image($folder,$image)
 
 function image_path($val)
  {
-    return asset('storage/images/'. $val);
+    return asset('uploads/images/'. $val);
  }
 
 

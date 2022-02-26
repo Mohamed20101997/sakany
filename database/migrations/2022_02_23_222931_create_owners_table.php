@@ -20,7 +20,7 @@ class CreateOwnersTable extends Migration
             $table->string('password');
             $table->integer('age');
             $table->string('mobile');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('id_image');
             $table->timestamps();
         });

@@ -21,4 +21,5 @@ class Owners extends Model
     } //end of scopeWhenSearch
 
 
+
 }
