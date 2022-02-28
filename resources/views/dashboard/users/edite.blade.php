@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <h1>Users</h1>
+    <h1>المستخدمين</h1>
 
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Users</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الصفحة الرئيسيه</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('user.index') }}">المستخدمين</a></li>
         <li class="breadcrumb-item" active>Edit</li>
     </ul>
 
@@ -21,7 +21,7 @@
                         <div class="col-md-4">
                             {{-- Name --}}
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>الاسم</label>
                                 <input type="text" name="name" placeholder="Enter the name" class="form-control" required value="{{ old('name',$user->name) }}">
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
@@ -32,8 +32,8 @@
                         <div class="col-md-4">
                             {{-- Email --}}
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="Enter the email" name="email" class="form-control"
+                                <label>البريد الالكتروني</label>
+                                <input type="email" placeholder="ادخال البريد الالكتروني" name="email" class="form-control"
                                     required value="{{ old('email',$user->email) }}">
                                 @error('email')
                                     <div class="text-danger">{{ $message }}</div>
@@ -44,8 +44,8 @@
                         <div class="col-md-4">
                             {{-- phone --}}
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" placeholder="Enter the phone number" name="mobile" class="form-control"
+                                <label>الهاتف</label>
+                                <input type="tel" placeholder="ادخال رقم الهاتف" name="mobile" class="form-control"
                                     required value="{{ old('mobile' , $user->mobile) }}">
                                 @error('mobile')
                                     <div class="text-danger">{{ $message }}</div>
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>photo</label><br>
+                                <label>الصوره الشخصيه</label><br>
                                 <label class="file center-block">
                                     <input type="file" name="image">
                                     <span class="file-custom"></span>
@@ -74,8 +74,8 @@
                         <div class="col-md-6">
                             {{-- age --}}
                             <div class="form-group">
-                                <label>Age</label>
-                                <input type="number" placeholder="Enter the age number" min="16" name="age" class="form-control"
+                                <label>العمر</label>
+                                <input type="number" placeholder="ادخال العمر" min="16" name="age" class="form-control"
                                     required value="{{ old('age', $user->age) }}">
                                 @error('age')
                                     <div class="text-danger">{{ $message }}</div>
@@ -90,8 +90,8 @@
                         <div class="col-md-6">
                             {{-- Password --}}
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" placeholder="Enter your complexity password"  name="password"
+                                <label>الرقم السري</label>
+                                <input type="password" placeholder="ادخال الرقم السري"  name="password"
                                     class="form-control">
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
@@ -102,8 +102,8 @@
                         <div class="col-md-6">
                             {{-- Password confirmation --}}
                             <div class="form-group">
-                                <label>Password confirmation</label>
-                                <input type="password" name="password_confirmation" placeholder="Re-enter your password"
+                                <label>تاكيد الرقم السري</label>
+                                <input type="password" name="password_confirmation" placeholder="ادخال الرقم السري"
                                      class="form-control">
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
@@ -115,7 +115,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>Update</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>تحديث</button>
                     </div>
                 </form>
 

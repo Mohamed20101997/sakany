@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 
 <head>
     <meta charset="utf-8">
-    <title>Shina Real Estate HTML Template | Homepage One</title>
+    <title>سكني</title>
     <!-- Stylesheets -->
     <link href="{{asset('front')}}/css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset('front')}}/css/bootstrap.rtl.full.min.css" rel="stylesheet">
     <link href="{{asset('front')}}/plugins/revolution/css/settings.css" rel="stylesheet" type="text/css"><!-- REVOLUTION SETTINGS STYLES -->
     <link href="{{asset('front')}}/plugins/revolution/css/layers.css" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
     <link href="{{asset('front')}}/plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->

@@ -1,12 +1,12 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <h1>Owners</h1>
+    <h1>الملاك</h1>
 
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('owner.index') }}">Owners</a></li>
-        <li class="breadcrumb-item" active>Add</li>
+        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الصفحه الرئيسيه</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('owner.index') }}">الملاك</a></li>
+        <li class="breadcrumb-item" active>إضافه</li>
     </ul>
 
 
@@ -21,8 +21,8 @@
                         <div class="col-md-4">
                             {{-- Name --}}
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" placeholder="Enter the name" class="form-control"
+                                <label>الاسم</label>
+                                <input type="text" name="name" placeholder="اضافة الاسم" class="form-control"
                                        required value="{{ old('name') }}">
                                 @error('name')
                                 <div class="text-danger">{{$message}}</div>
@@ -33,8 +33,8 @@
                         <div class="col-md-4">
                             {{-- Email --}}
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="Enter the email" name="email" class="form-control"
+                                <label>البريد الالكتروني </label>
+                                <input type="email" placeholder="اضافة البريد الالكتروني" name="email" class="form-control"
                                        required value="{{ old('email') }}">
                                 @error('email')
                                 <div class="text-danger">{{$message}}</div>
@@ -45,8 +45,8 @@
                         <div class="col-md-4">
                             {{-- phone --}}
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" placeholder="Enter the phone number" name="mobile"
+                                <label>الهاتف</label>
+                                <input type="tel" placeholder="اضافة رقم الهاتف" name="mobile"
                                        class="form-control" required value="{{ old('mobile') }}">
                                 @error('mobile')
                                 <div class="text-danger">{{$message}}</div>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>photo</label><br>
+                                <label>الصورة الشخصيه</label><br>
                                 <label class="file center-block">
                                     <input type="file"  name="image">
                                     <span class="file-custom"></span>
@@ -74,7 +74,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label> personal ID Photo</label> <br>
+                                <label> البطاقه الشخصيه</label> <br>
                                 <label class="file center-block">
                                     <input type="file" name="id_image">
                                     <span class="file-custom"></span>
@@ -89,8 +89,8 @@
                         <div class="col-md-4">
                             {{-- age --}}
                             <div class="form-group">
-                                <label>Age</label>
-                                <input type="number" placeholder="Enter the age number" name="age" min="16" class="form-control" required value="{{ old('age') }}">
+                                <label>العمر</label>
+                                <input type="number" placeholder="اضافه العمر" name="age" min="16" class="form-control" required value="{{ old('age') }}">
                                 @error('age')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -104,8 +104,8 @@
                         <div class="col-md-6">
                             {{-- Password --}}
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" placeholder="Enter your complexity password" required
+                                <label>الرقم السري</label>
+                                <input type="password" placeholder="اضافة الرقم السري" required
                                        name="password" class="form-control">
                                 @error('password')
                                 <div class="text-danger">{{$message}}</div>
@@ -116,8 +116,8 @@
                         <div class="col-md-6">
                             {{-- Password confirmation --}}
                             <div class="form-group">
-                                <label>Password confirmation</label>
-                                <input type="password" name="password_confirmation" placeholder="Re-enter your password"
+                                <label>تاكيدالرقم السري</label>
+                                <input type="password" name="password_confirmation" placeholder="اضافة الرقم السري"
                                        required class="form-control">
                                 @error('password')
                                 <div class="text-danger">{{$message}}</div>
@@ -129,7 +129,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>Add</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>إضافه</button>
                     </div>
                 </form>
 

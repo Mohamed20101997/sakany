@@ -2,14 +2,12 @@
 
 @section('content')
 
-    <h1>Users</h1>
+    <h1>المستخدمين</h1>
 
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Dashboard</a></li>
-        <li class="breadcrumb-item" active>Users</li>
+        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الصفحة الرئيسيه</a></li>
+        <li class="breadcrumb-item" active>المستخدمين</li>
     </ul>
-
-
     <div class="row">
         <div class="col-md-12">
 
@@ -18,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" autofocus name="search" placeholder="search" class="form-control" value="{{ request()->search }}">
+                                <input type="text" autofocus name="search" placeholder="بحث" class="form-control" value="{{ request()->search }}">
                             </div>
                         </div><!-- end of col 4 -->
 
@@ -37,12 +35,12 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th>Age</th>
-                                        <th>Photo</th>
-                                        <th>Actions</th>
+                                        <th>الاسم</th>
+                                        <th>البريد الالكتروني</th>
+                                        <th>الهاتف</th>
+                                        <th>العمر</th>
+                                        <th>الصوره الشخصيه</th>
+                                        <th>الاعدادات</th>
                                     </tr>
                                     </thead>
 
@@ -79,7 +77,7 @@
                             {{ $users->appends(request()->query())->links() }}
 
                         @else
-                            <h3 class="alert alert-info text-center d-flex justify-content-center" style="margin: 0 auto; font-weight: 400"><i class="fa fa-exclamation-triangle"></i> Sorry no records found</h3>
+                            <h3 class="alert alert-info text-center d-flex justify-content-center" style="margin: 0 auto; font-weight: 400"><i class="fa fa-exclamation-triangle"></i> لا يوجد اي بيانات للعرض</h3>
                         @endif
                     </div> <!-- end of col-md-12 -->
                 </div> <!-- end of row -->
