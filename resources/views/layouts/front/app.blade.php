@@ -44,7 +44,7 @@
                 <div class="outer-container clearfix">
                     <!--Logo Box-->
                     <div class="logo-box">
-                        <div class="logo"><a href="index-2.html"><img src="{{asset('front')}}/images/logo2.png" style="max-width: 60%;background: #fff"  alt=""></a></div>
+                        <div class="logo"><a href="index-2.html"><h1>سكنــي</h1></a></div>
 
                     </div>
 

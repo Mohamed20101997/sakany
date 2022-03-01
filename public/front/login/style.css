@@ -32,9 +32,6 @@ body {
 }
 .box-form .left {
   color: #FFFFFF;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("https://i.pinimg.com/736x/5d/73/ea/5d73eaabb25e3805de1f8cdea7df4a42--tumblr-backgrounds-iphone-phone-wallpapers-iphone-wallaper-tumblr.jpg");
   overflow: hidden;
 }
 .box-form .left .overlay {
@@ -162,3 +159,4 @@ label span.text-checkbox {
 label input[type="checkbox"] {
   display: none;
 }
+

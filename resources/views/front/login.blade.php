@@ -1,52 +1,61 @@
 @extends('layouts.front.app')
-
 @section('css')
-    <link rel="stylesheet" href="{{asset('front/login')}}/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/login/')}}/css/main.css">
 @endsection
-
 @section('contain')
 
-    <!-- partial:index.partial.html -->
-    <div class="box-form">
-        <div class="left">
-            <div class="overlay">
-                <h1>Hello World.</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur et est sed felis aliquet sollicitudin</p>
-                <span>
-			<p>login with social media</p>
-			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
-		</span>
+
+    <div class="limiter" dir="rtl">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						تسجيل دخول
+					</span>
+                </div>
+
+                <form class="login100-form validate-form">
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                        <span class="label-input100">البريد الالكتروني</span>
+                        <input class="input100" type="text" name="email" placeholder="إدخال البريد الالكتروني">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                        <span class="label-input100">الرقم السري</span>
+                        <input class="input100" type="password" name="pass" placeholder="ادخال الرقم السري">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                        <span class="label-input100">الرقم السري</span>
+                        <input class="input100" type="password" name="pass" placeholder="ادخال الرقم السري">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox mt-4">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="type">
+                        <label class="label-checkbox100" for="ckb1"> مالك </label>
+                    </div>
+
+
+                    <div class="flex-sb-m w-full p-b-30 ">
+                        <div>
+                            <a href="{{route('front.register')}}" class="txt1">
+                                ليس لدي حساب
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            تسجيل
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-
-
-        <div class="right">
-            <h5>Login</h5>
-            <p>Don't have an account? <a href="#">Creat Your Account</a> it takes less than a minute</p>
-            <div class="inputs">
-                <input type="text" placeholder="user name">
-                <br>
-                <input type="password" placeholder="password">
-            </div>
-
-            <br><br>
-
-            <div class="remember-me--forget-password">
-                <!-- Angular -->
-                <label>
-                    <input type="checkbox" name="item" checked/>
-                    <span class="text-checkbox">Remember me</span>
-                </label>
-                <p>forget password?</p>
-            </div>
-
-            <br>
-            <button>Login</button>
-        </div>
-
     </div>
-    <!-- partial -->
+
 
 @endsection
