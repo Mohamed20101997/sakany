@@ -34,23 +34,21 @@
                     </div>
 
                     <div class="contact100-form-checkbox mt-4">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="type">
-                        <label class="label-checkbox100" for="ckb1"> مالك </label>
-                    </div>
-
-
-                    <div class="flex-sb-m w-full p-b-30 ">
-                        <div>
-                            <a href="{{route('front.register')}}" class="txt1">
-                                ليس لدي حساب
-                            </a>
-                        </div>
+                        <span class="label-input100" style="font-size: 20px">المالك</span>
+                        <input type="checkbox" id="switch" /><label for="switch"></label>
                     </div>
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn">
                             تسجيل
                         </button>
+                    </div>
+                    <div class="flex-sb-m w-full p-b-30 ">
+                        <div>
+                            <a href="{{route('front.register')}}" class="txt1">
+                                ليس لدي حساب
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>

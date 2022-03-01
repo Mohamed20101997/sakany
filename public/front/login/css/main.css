@@ -153,7 +153,7 @@ iframe {
 [ Utility ]*/
 .txt1 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 25px;
   line-height: 1.4;
   color: #999999;
 }
@@ -400,7 +400,7 @@ input.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  min-width: 160px;
+  min-width: 100px;
   height: 50px;
   background-color: #57b846;
   border-radius: 25px;
@@ -512,5 +512,49 @@ input.input100 {
     opacity: 1;
   }
 }
+
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 60px;
+    height: 30px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background: #bada55;
+}
+
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 130px;
+}
+
 
 
