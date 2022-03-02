@@ -49,7 +49,7 @@
                 <div class="outer-container clearfix">
                     <!--Logo Box-->
                     <div class="logo-box">
-                        <div class="logo"><a href="{{route('home')}}"><h1>سكنــي</h1></a></div>
+                        <div class="logo"><a href="{{route('home')}}"><img src="{{asset('front/images/logo3.png')}}"></a></div>
 
                     </div>
 
