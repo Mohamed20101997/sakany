@@ -49,7 +49,7 @@
                 <div class="outer-container clearfix">
                     <!--Logo Box-->
                     <div class="logo-box">
-                        <div class="logo"><a href="{{route('home')}}"><img src="{{asset('front/images/logo3.png')}}"></a></div>
+                        <div class="logo"><a href="{{route('home')}}"><img src="{{asset('front/images/logo4.png')}}"></a></div>
 
                     </div>
 
@@ -117,7 +117,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index-2.html" class="img-responsive"><img src="{{asset('front')}}/images/logo2.png" style="max-width: 65%;" alt="" title=""></a>
+                    <a href="index-2.html" class="img-responsive"><img src="{{asset('front')}}/images/logo3.png" style="max-width: 65%;" alt="" title=""></a>
                 </div>
 
                 <!--Right Col-->
