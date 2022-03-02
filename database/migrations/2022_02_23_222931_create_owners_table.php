@@ -22,6 +22,8 @@ class CreateOwnersTable extends Migration
             $table->string('mobile');
             $table->string('image')->nullable();
             $table->string('id_image');
+            $table->tinyInteger('statues')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

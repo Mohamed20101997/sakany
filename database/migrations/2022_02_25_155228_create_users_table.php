@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->integer('age');
             $table->string('mobile');
             $table->string('image')->nullable();
+            $table->tinyInteger('statues')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

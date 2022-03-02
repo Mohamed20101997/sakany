@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Owners extends Model
+class Owners extends Authenticatable
 {
-
+    use Notifiable;
     public $timestamps = false;
 
-    protected $fillable = ['name','email','password','age','mobile', 'image', 'id_image'];
+    protected $fillable = ['name','email','password','age','mobile', 'image', 'id_image','statues'];
 
     public function scopeWhenSearch($query , $search)
     {
@@ -20,6 +21,9 @@ class Owners extends Model
 
     } //end of scopeWhenSearch
 
+    public function getActive(){
+        return $this->statues == 1 ? 'مفعل' : 'غير مفعل' ;
+    }
 
 
 }

@@ -1,7 +1,8 @@
 @if(Session::has('error'))
     <div class="row mr-2 ml-2" >
-        <button type="text" class="btn btn-lg btn-block btn-outline-danger mb-2"
-                id="type-error">{{Session::get('error')}}
-        </button>
+        <p  class="alert alert-danger"id="type-error" style="font-size: 18px">
+            <i class="fa fa-warning"></i>
+            {{Session::get('error')}}
+        </p>
     </div>
 @endif

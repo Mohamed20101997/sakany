@@ -21,6 +21,11 @@
     <link rel="shortcut icon" href="{{asset('front')}}/images/favicon.png" type="image/x-icon">
     <link rel="icon" href="{{asset('front')}}/images/favicon.png" type="image/x-icon">
 
+    {{-- noty --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
+    <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
     @yield('css')
 
     <!-- Responsive -->
@@ -44,7 +49,7 @@
                 <div class="outer-container clearfix">
                     <!--Logo Box-->
                     <div class="logo-box">
-                        <div class="logo"><a href="index-2.html"><h1>سكنــي</h1></a></div>
+                        <div class="logo"><a href="{{route('home')}}"><h1>سكنــي</h1></a></div>
 
                     </div>
 
@@ -63,12 +68,41 @@
                             </div>
 
                             <div class="navbar-collapse collapse clearfix">
+
                                 <ul class="navigation clearfix" id="nav_one">
-                                    <li><a href="{{route('home')}}">Home</a></li>
-                                    <li><a href="{{route('front.login')}}">Login</a></li>
-                                    <li><a href="{{route('front.register')}}">Sing Up</a></li>
+
+
+                                    @if(auth()->guard('user')->check() || auth()->guard('owner')->check())
+
+                                        <li>
+                                            <div class="dropdown">
+                                                <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+                                                    @if(auth()->guard('user')->check())
+                                                        {{auth()->guard('user')->user()->name}}
+                                                    @elseif(auth()->guard('owner')->check())
+                                                        {{auth()->guard('owner')->user()->name}}
+                                                    @endif
+
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{route('front.logout')}}">خروج</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        @if(auth()->guard('owner')->check())
+                                            <li><a href="#">إضافة شقه</a></li>
+                                        @endif
+
+                                    @else
+                                        <li><a href="{{route('front.login')}}">دخول</a></li>
+                                        <li><a href="{{route('front.register')}}">حساب جديد</a></li>
+                                    @endif
+                                        <li><a href="{{route('home')}}">الرئيسيه</a></li>
                                 </ul>
+
+
                             </div>
+
                         </nav>
                         <!-- Main Menu End-->
                     </div>
@@ -116,7 +150,8 @@
     </header>
     <!--End Main Header -->
 
-
+@include('dashboard.partials._confirm')
+@include('dashboard.partials._sessions')
    @yield('contain')
 
     <!--Main Footer-->
@@ -163,5 +198,8 @@
 
 <!--Color Switcher-->
 <script src="{{asset('front')}}/js/color-settings.js"></script>
+
+@yield('js')
+
 </body>
 </html>

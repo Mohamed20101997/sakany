@@ -176,7 +176,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 15px;
   background: #ebeeef;
 }
@@ -245,8 +245,8 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 43px 88px 93px 190px;
+  justify-content: center;
+  padding: 50px;
 }
 
 
@@ -259,19 +259,7 @@ iframe {
   border-bottom: 1px solid #b2b2b2;
 }
 
-.label-input100 {
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  color: #808080;
-  line-height: 1.2;
-  text-align: right;
 
-  position: absolute;
-  top: 14px;
-  left: -105px;
-  width: 80px;
-
-}
 
 /*---------------------------------------------*/
 .input100 {
@@ -389,7 +377,10 @@ input.input100 {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
 }
+
 
 .login100-form-btn {
   display: -webkit-box;
@@ -430,6 +421,11 @@ input.input100 {
   }
 }
 
+.label-input100 {
+
+    font-size: 20px;
+}
+
 @media (max-width: 480px) {
   .login100-form {
     padding: 43px 15px 57px 15px;
@@ -442,6 +438,8 @@ input.input100 {
     left: unset;
     width: 100%;
     padding: 0 5px;
+      font-size: 20px;
+      font-weight: bold;
   }
 }
 
@@ -544,7 +542,7 @@ label:after {
 }
 
 input:checked + label {
-    background: #bada55;
+    background: #57b846;
 }
 
 input:checked + label:after {

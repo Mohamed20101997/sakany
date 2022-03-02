@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Users extends Model
+class Users extends Authenticatable
 {
+    use Notifiable;
     public $timestamps = false;
 
-    protected $fillable = ['name','email','password','age','mobile', 'image',];
+    protected $fillable = ['name','email','password','age','mobile', 'image','statues'];
 
     public function scopeWhenSearch($query , $search)
     {
@@ -18,5 +20,9 @@ class Users extends Model
         });
 
     } //end of scopeWhenSearch
+
+    public function getActive(){
+        return $this->statues == 1 ? 'مفعل' : 'غير مفعل' ;
+    }
 
 }

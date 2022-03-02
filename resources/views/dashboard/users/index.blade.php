@@ -40,6 +40,7 @@
                                         <th>الهاتف</th>
                                         <th>العمر</th>
                                         <th>الصوره الشخصيه</th>
+                                        <th>الحاله</th>
                                         <th>الاعدادات</th>
                                     </tr>
                                     </thead>
@@ -60,7 +61,9 @@
                                                     <img src="{{image_path('user.png')}}" width="60px" class="img-thumbnail">
                                                 @endif
                                             </td>
-
+                                            <td>
+                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $user->getActive($user->statues)}}</span></h5>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                 <form method="post" action={{ route('user.destroy', $user->id)}} style="display:inline-block">

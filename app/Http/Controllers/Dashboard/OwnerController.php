@@ -13,7 +13,7 @@ class OwnerController extends Controller
         $owners = Owners::whenSearch(Request()->search)->paginate(5);
         return view('dashboard.owners.index',compact('owners'));
     }
-    
+
     public function create()
     {
         return view('dashboard.owners.create');
@@ -33,7 +33,14 @@ class OwnerController extends Controller
 
        try{
 
+
+           if (!$request->has('statues'))
+               $request->request->add(['statues' => 0]);
+           else
+               $request->request->add(['statues' => 1]);
+
             $data = $request->except('_token');
+
 
             if(!empty($data['password'])){
                 $data['password'] = bcrypt($data['password']);
@@ -50,12 +57,12 @@ class OwnerController extends Controller
 
              Owners::create($data);
 
-            session()->flash('success', 'Owner added successfully');
+            session()->flash('success', 'تم الاضافه بنجاح');
 
             return redirect()->route('owner.index');
 
        }catch(\Exception $e){
-           return redirect()->back()->with(['error'=>'there is problem please try again']);
+           return redirect()->back()->with(['error'=>'هناك مشكله']);
        }
 
     }
@@ -72,7 +79,7 @@ class OwnerController extends Controller
         if($owner){
             return view('dashboard.owners.edite', compact('owner'));
         }else{
-            return redirect()->back()->with(['error'=>'this owners is not found']);
+            return redirect()->back()->with(['error'=>'لا يوجد ملاك']);
         }
 
     }
@@ -93,6 +100,11 @@ class OwnerController extends Controller
         try{
 
             $owner =  Owners::find($id);
+
+            if (!$request->has('statues'))
+                $request->request->add(['statues' => 0]);
+            else
+                $request->request->add(['statues' => 1]);
 
             $data = $request->except('_token');
 
@@ -119,12 +131,12 @@ class OwnerController extends Controller
 
             $owner->update($data);
 
-            session()->flash('success', 'Owner Updated successfully');
+            session()->flash('success', 'تم التحديث بنجاح');
 
             return redirect()->route('owner.index');
 
         }catch(\Exception $e){
-            return redirect()->back()->with(['error'=>'there is problem please try again']);
+            return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
     }
 
@@ -136,7 +148,7 @@ class OwnerController extends Controller
 
             if(!$owner)
             {
-                return redirect()->back()->with(['error'=>'owner not found']);
+                return redirect()->back()->with(['error'=>'لا يوجد ملاك']);
             }
 
             remove_previous($owner->image);
@@ -145,13 +157,13 @@ class OwnerController extends Controller
 
             $owner->delete();
 
-            session()->flash('success', 'Owners deleted successfully');
+            session()->flash('success', 'تم الحذف بنجاح');
 
             return redirect()->route('owner.index');
 
         }catch(\Exception $e){
 
-            return redirect()->back()->with(['error'=>'there is problem please try again']);
+            return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
     }
 }

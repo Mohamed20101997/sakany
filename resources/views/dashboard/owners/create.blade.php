@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             {{-- Password --}}
                             <div class="form-group">
                                 <label>الرقم السري</label>
@@ -113,7 +113,7 @@
                             </div>
                         </div>{{-- end of col Password --}}
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             {{-- Password confirmation --}}
                             <div class="form-group">
                                 <label>تاكيدالرقم السري</label>
@@ -124,6 +124,21 @@
                                 @enderror
                             </div>
                         </div>{{-- end of col Password confirmation --}}
+
+
+                        <div class="col-md-4">
+                            {{-- statues --}}
+                            <div class="form-group">
+                                <div class="toggle-flip">
+                                    <label>حالة المالك</label> <br>
+                                    <label><input type="checkbox" value="1" name="statues" data-color="success" checked>
+                                        <span class="flip-indecator" data-toggle-on="مفعله" data-toggle-off="غير مفعله"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>{{-- end of col statues --}}
+
+
 
                     </div>{{-- end of row --}}
 

@@ -17,14 +17,5 @@ class HomeController extends Controller
         return view('front.details');
     }
 
-    public function login()
-    {
-        return view('front.login');
-    }
-
-    public function register()
-    {
-        return view('front.register');
-    }
 
 }

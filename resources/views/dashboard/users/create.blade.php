@@ -58,7 +58,7 @@
                     </div> {{-- end of row --}}
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>الصوره الشخصيه</label><br>
                                 <label class="file center-block">
@@ -73,7 +73,7 @@
                         </div>
 
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             {{-- age --}}
                             <div class="form-group">
                                 <label>العمر</label>
@@ -84,6 +84,18 @@
                             </div>
                         </div>{{-- end of col age --}}
 
+
+                        <div class="col-md-4">
+                            {{-- statues --}}
+                            <div class="form-group">
+                                <div class="toggle-flip">
+                                    <label>حالة المالك</label> <br>
+                                    <label><input type="checkbox" value="1" name="statues" data-color="success" checked>
+                                        <span class="flip-indecator" data-toggle-on="مفعله" data-toggle-off="غير مفعله"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>{{-- end of col statues --}}
 
                     </div>
 

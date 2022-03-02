@@ -33,6 +33,10 @@ class UserController extends Controller
         ]);
 
         try{
+            if (!$request->has('statues'))
+                $request->request->add(['statues' => 0]);
+            else
+                $request->request->add(['statues' => 1]);
 
             $data = $request->except('_token');
 
@@ -47,12 +51,12 @@ class UserController extends Controller
 
             Users::create($data);
 
-            session()->flash('success', 'User added successfully');
+            session()->flash('success', 'تم الاضافه بنجاح');
 
             return redirect()->route('user.index');
 
         }catch(\Exception $e){
-            return redirect()->back()->with(['error'=>'there is problem please try again']);
+            return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
 
     }
@@ -70,7 +74,7 @@ class UserController extends Controller
         if($user){
             return view('dashboard.users.edite', compact('user'));
         }else{
-            return redirect()->back()->with(['error'=>'this users is not found']);
+            return redirect()->back()->with(['error'=>'لا يوجد مستخدمين']);
         }
 
     }
@@ -90,6 +94,11 @@ class UserController extends Controller
         try{
 
         $user =  Users::find($id);
+
+            if (!$request->has('statues'))
+                $request->request->add(['statues' => 0]);
+            else
+                $request->request->add(['statues' => 1]);
 
         $data = $request->except('_token');
 
@@ -116,12 +125,12 @@ class UserController extends Controller
 
         $user->update($data);
 
-        session()->flash('success', 'User Updated successfully');
+        session()->flash('success', 'تم التعديل بنجاح');
 
         return redirect()->route('user.index');
 
         }catch(\Exception $e){
-            return redirect()->back()->with(['error'=>'there is problem please try again']);
+            return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
     }
 
@@ -133,20 +142,20 @@ class UserController extends Controller
 
             if(!$user)
             {
-                return redirect()->back()->with(['error'=>'user not found']);
+                return redirect()->back()->with(['error'=>'لا يوجد مستخدمين']);
             }
 
             remove_previous($user->image);
 
             $user->delete();
 
-            session()->flash('success', 'Users deleted successfully');
+            session()->flash('success', 'تم الحذف بنجاح');
 
             return redirect()->route('user.index');
 
         }catch(\Exception $e){
 
-            return redirect()->back()->with(['error'=>'there is problem please try again']);
+            return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
     }
 }

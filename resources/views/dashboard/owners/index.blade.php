@@ -42,6 +42,7 @@
                                         <th>الهاتف</th>
                                         <th>العمر</th>
                                         <th>الصورة الشخصيه</th>
+                                        <th>الحاله</th>
                                         <th>الاعدادات</th>
                                     </tr>
                                     </thead>
@@ -54,7 +55,6 @@
                                             <td>{{ $owner->email }}</td>
                                             <td>{{ $owner->mobile }}</td>
                                             <td>{{ $owner->age }}</td>
-
                                             <td>
                                                 @if(!empty($owner->image))
                                                     <img src="{{image_path($owner->image)}}" width="60px" class="img-thumbnail">
@@ -62,7 +62,9 @@
                                                     <img src="{{image_path('user.png')}}" width="60px" class="img-thumbnail">
                                                 @endif
                                             </td>
-
+                                            <td>
+                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $owner->getActive($owner->statues)}}</span></h5>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('owner.edit', $owner->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                 <form method="post" action={{ route('owner.destroy', $owner->id)}} style="display:inline-block">
