@@ -84,16 +84,16 @@
                         </div>{{-- end of col age --}}
 
                         <div class="col-md-4">
-                            {{-- statues --}}
+                            {{-- state --}}
                             <div class="form-group">
                                 <div class="toggle-flip">
                                     <label>حالة المالك</label> <br>
-                                    <label><input type="checkbox" value="1" name="statues" data-color="success" {{$user->statues == 1 ? 'checked' : ''}}>
+                                    <label><input type="checkbox" value="1" name="state" data-color="success" {{$user->state == 1 ? 'checked' : ''}}>
                                         <span class="flip-indecator" data-toggle-on="مفعله" data-toggle-off="غير مفعله"></span>
                                     </label>
                                 </div>
                             </div>
-                        </div>{{-- end of col statues --}}
+                        </div>{{-- end of col state --}}
 
                     </div>
 

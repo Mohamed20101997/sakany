@@ -62,7 +62,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $user->getActive($user->statues)}}</span></h5>
+                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $user->getActive($user->state)}}</span></h5>
                                             </td>
                                             <td>
                                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

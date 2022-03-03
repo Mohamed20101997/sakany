@@ -33,10 +33,10 @@ class UserController extends Controller
         ]);
 
         try{
-            if (!$request->has('statues'))
-                $request->request->add(['statues' => 0]);
+            if (!$request->has('state'))
+                $request->request->add(['state' => 0]);
             else
-                $request->request->add(['statues' => 1]);
+                $request->request->add(['state' => 1]);
 
             $data = $request->except('_token');
 
@@ -95,10 +95,10 @@ class UserController extends Controller
 
         $user =  Users::find($id);
 
-            if (!$request->has('statues'))
-                $request->request->add(['statues' => 0]);
+            if (!$request->has('state'))
+                $request->request->add(['state' => 0]);
             else
-                $request->request->add(['statues' => 1]);
+                $request->request->add(['state' => 1]);
 
         $data = $request->except('_token');
 

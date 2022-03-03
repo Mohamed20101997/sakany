@@ -76,7 +76,7 @@
 <script>
     $(document).ready(function() {
         $('#summernote ,#summernote1 ,#summernote2').summernote({
-            placeholder: 'Description for article',
+            placeholder: 'إضافة وصف للشقه',
             height: 200
         });
     });

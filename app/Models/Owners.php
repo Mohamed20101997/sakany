@@ -10,7 +10,7 @@ class Owners extends Authenticatable
     use Notifiable;
     public $timestamps = false;
 
-    protected $fillable = ['name','email','password','age','mobile', 'image', 'id_image','statues'];
+    protected $fillable = ['name','email','password','age','mobile', 'image', 'id_image','state'];
 
     public function scopeWhenSearch($query , $search)
     {
@@ -22,8 +22,11 @@ class Owners extends Authenticatable
     } //end of scopeWhenSearch
 
     public function getActive(){
-        return $this->statues == 1 ? 'مفعل' : 'غير مفعل' ;
+        return $this->state == 1 ? 'مفعل' : 'غير مفعل' ;
     }
 
+    public function homes(){
+        return $this->hasMany(Home::class , 'owner_id' ,'id');
+    }
 
 }

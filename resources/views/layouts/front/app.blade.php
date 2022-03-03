@@ -100,7 +100,6 @@
                                         <li><a href="{{route('home')}}">الرئيسيه</a></li>
                                 </ul>
 
-
                             </div>
 
                         </nav>
@@ -117,7 +116,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index-2.html" class="img-responsive"><img src="{{asset('front')}}/images/logo3.png" style="max-width: 65%;" alt="" title=""></a>
+                    <a href="{{route('home')}}" class="img-responsive"><img src="{{asset('front')}}/images/logo6.png" style="width: 40%;" alt="" title=""></a>
                 </div>
 
                 <!--Right Col-->

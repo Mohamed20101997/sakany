@@ -22,9 +22,9 @@ class CreateOwnersTable extends Migration
             $table->string('mobile');
             $table->string('image')->nullable();
             $table->string('id_image');
-            $table->tinyInteger('statues')->nullable();
+            $table->tinyInteger('state')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+
         });
     }
 

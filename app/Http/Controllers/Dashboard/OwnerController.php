@@ -9,7 +9,6 @@ class OwnerController extends Controller
 {
     public function index()
     {
-
         $owners = Owners::whenSearch(Request()->search)->paginate(5);
         return view('dashboard.owners.index',compact('owners'));
     }
@@ -32,12 +31,10 @@ class OwnerController extends Controller
         ]);
 
        try{
-
-
-           if (!$request->has('statues'))
-               $request->request->add(['statues' => 0]);
+           if (!$request->has('state'))
+               $request->request->add(['state' => 0]);
            else
-               $request->request->add(['statues' => 1]);
+               $request->request->add(['state' => 1]);
 
             $data = $request->except('_token');
 
@@ -101,10 +98,10 @@ class OwnerController extends Controller
 
             $owner =  Owners::find($id);
 
-            if (!$request->has('statues'))
-                $request->request->add(['statues' => 0]);
+            if (!$request->has('state'))
+                $request->request->add(['state' => 0]);
             else
-                $request->request->add(['statues' => 1]);
+                $request->request->add(['state' => 1]);
 
             $data = $request->except('_token');
 
