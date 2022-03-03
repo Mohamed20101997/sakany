@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label>صورة الغلاف</label><br>
                                 <label class="file center-block">
-                                    <input type="file"  name="cover">
+                                    <input type="file"  name="cover" required>
                                     <span class="file-custom"></span>
                                 </label>
                                 <br>

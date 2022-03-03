@@ -37,7 +37,18 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-
+                                        <th>صورة</th>
+                                        <th>المالك</th>
+                                        <th>البلد</th>
+                                        <th>المدينه</th>
+                                        <th>الدور (الطابق)</th>
+                                        <th>العنوان</th>
+                                        <th>عدد الغرف</th>
+                                        <th>عدد الحمامات</th>
+                                        <th>عدد السراير</th>
+                                        <th>نوع الايجار</th>
+                                        <th>حالة الحجز</th>
+                                        <th>حالة الشقه</th>
                                         <th>الاعدادات</th>
                                     </tr>
                                     </thead>
@@ -46,6 +57,25 @@
                                     @foreach ($homes as $index=>$home)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
+
+                                            <td><img src="{{image_path($home->cover)}}" width="60px" class="img-thumbnail"> </td>
+                                            <td>{{$home->owner->name}}</td>
+                                            <td>{{$home->country}}</td>
+                                            <td>{{$home->city}}</td>
+                                            <td><span class="badge badge-danger p-2">{{$home->floor}}</span> </td>
+                                            <td>{{$home->address}}</td>
+                                            <td>{{$home->number_of_bedroom}}</td>
+                                            <td>{{$home->number_of_bathroom}}</td>
+                                            <td>{{$home->number_of_beds}}</td>
+                                            <td>{{$home->rent_type}}</td>
+
+                                            <td>
+                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $home->getActive($home->reserved)}}</span></h5>
+                                            </td>
+
+                                            <td>
+                                                <h5 style="display: inline-block"><span class="badge badge-primary p-2">{{ $home->getActive($home->state)}}</span></h5>
+                                            </td>
 
                                             <td>
                                                 <a href="{{ route('home.edit', $home->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
