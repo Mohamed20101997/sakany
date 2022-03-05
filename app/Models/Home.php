@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Home extends Model
 {
     public $timestamps = false;
@@ -20,10 +21,28 @@ class Home extends Model
             return $q->where('country' , 'like' , "%$search%")
                 ->orWhere('city' , 'like' , "%$search%")
                 ->orWhere('floor' , 'like' , "%$search%")
+                ->orWhere('garage' , 'like' , "%$search%")
+                ->orWhere('rent_type' , 'like' , "%$search%")
                 ->orWhere('number_of_bathroom' , 'like' , "%$search%")
                 ->orWhere('number_of_bedroom' , 'like' , "%$search%")
                 ->orWhere('number_of_beds' , 'like' , "%$search%");
         });
+
+    } //end of scopeWhenSearch
+
+
+    public function scopeWhenHomeSearch($query , $search)
+    {
+
+        return $query->where('country' , $search->country)->orWhere('city' , "$search->city ");
+
+//        return $query->when($search , function($q) use ($search){
+//            return $q->where('country' , 'like' , "%$search->country%")
+//                ->orWhere('city' , 'like' , "%$search->city%")
+//                ->orWhere('floor' , 'like' , "%$search->floor%")
+//                ->orWhere('garage' , 'like' , "%$search->garage%")
+//                ->orWhere('rent_type' , 'like' , "%$search->rent_type%");
+//        });
 
     } //end of scopeWhenSearch
 
@@ -62,5 +81,6 @@ class Home extends Model
            return 'فتره زمنيه';
        }
     }
+
 
 }

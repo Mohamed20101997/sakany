@@ -205,6 +205,7 @@ ul,li{
 	color:#1a1d1f;
 	font-size:16px;
 	font-weight:500;
+    float: right;
 }
 
 .list-style-two li .icon{
@@ -232,7 +233,7 @@ ul,li{
 .list-style-three li:before{
 	position:absolute;
 	content:'\f00c';
-	left:0px;
+	right:-25px;
 	top:0px;
 	color:#71b100;
 	font-family: 'FontAwesome';

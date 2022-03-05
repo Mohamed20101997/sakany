@@ -3,7 +3,7 @@
 
 use App\Models\Review;
 use \App\Models\User;
-
+use Illuminate\Support\Facades\DB;
 
 define('PAGINATION_COUNT', 15);
 
@@ -77,4 +77,12 @@ function average($id){
 function getUser($id){
     return User::find($id);
 }
+
+
+function getDistaincat($value){
+        $dist = \App\Models\Home::distinct($value)->pluck($value)->toArray();
+
+
+        return $dist;
+    }
 
