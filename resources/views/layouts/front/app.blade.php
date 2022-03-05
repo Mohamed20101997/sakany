@@ -10,10 +10,11 @@
     <link href="{{asset('front')}}/plugins/revolution/css/settings.css" rel="stylesheet" type="text/css"><!-- REVOLUTION SETTINGS STYLES -->
     <link href="{{asset('front')}}/plugins/revolution/css/layers.css" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
     <link href="{{asset('front')}}/plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
+    <link href="{{asset('front')}}/css/owl.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{asset('front')}}/css/style.css" rel="stylesheet">
     <link href="{{asset('front')}}/css/responsive.css" rel="stylesheet">
     <!--Color Switcher Mockup-->
-    <link href="{{asset('front/')}}/css/color-switcher-design.css" rel="stylesheet">
+    <link href="{{asset('front')}}/css/color-switcher-design.css" rel="stylesheet">
 
     <!--Color Themes-->
     <link id="theme-color-file" href="{{asset('front')}}/css/color-themes/default-theme.css" rel="stylesheet">
@@ -70,7 +71,6 @@
                             <div class="navbar-collapse collapse clearfix">
 
                                 <ul class="navigation clearfix" id="nav_one">
-
 
                                     @if(auth()->guard('user')->check() || auth()->guard('owner')->check())
 
@@ -134,9 +134,32 @@
 
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li><a href="{{route('home')}}">Home</a></li>
-                                <li><a href="{{route('front.login')}}">Login</a></li>
-                                <li><a href="{{route('front.register')}}">Sing Up</a></li>
+                                @if(auth()->guard('user')->check() || auth()->guard('owner')->check())
+
+                                    <li>
+                                        <div class="dropdown">
+                                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+                                                @if(auth()->guard('user')->check())
+                                                    {{auth()->guard('user')->user()->name}}
+                                                @elseif(auth()->guard('owner')->check())
+                                                    {{auth()->guard('owner')->user()->name}}
+                                                @endif
+
+                                                <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{{route('front.logout')}}">خروج</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    @if(auth()->guard('owner')->check())
+                                        <li><a href="#">إضافة شقه</a></li>
+                                    @endif
+
+                                @else
+                                    <li><a href="{{route('front.login')}}">دخول</a></li>
+                                    <li><a href="{{route('front.register')}}">حساب جديد</a></li>
+                                @endif
+                                <li><a href="{{route('home')}}">الرئيسيه</a></li>
                             </ul>
                         </div>
                     </nav><!-- Main Menu End-->
@@ -154,7 +177,7 @@
    @yield('contain')
 
     <!--Main Footer-->
-    <footer class="main-footer" style="background-image:url(images/background/2.jpg)">
+    <footer class="main-footer" style="background-image:url('../front/images/background/2.jpg')">
         <div class="footer-bottom">
             <div class="auto-container">
                 <div class="row clearfix">
@@ -173,20 +196,6 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-double-up"></span></div>
 
 <script src="{{asset('front')}}/js/jquery.js"></script>
-<!--Revolution Slider-->
-<script src="{{asset('front')}}/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="{{asset('front')}}/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script src="{{asset('front')}}/js/main-slider-script.js"></script>
-
 <script src="{{asset('front')}}/js/bootstrap.min.js"></script>
 <script src="{{asset('front')}}/js/jquery.fancybox.js"></script>
 <script src="{{asset('front')}}/js/owl.js"></script>
@@ -197,7 +206,6 @@
 
 <!--Color Switcher-->
 <script src="{{asset('front')}}/js/color-settings.js"></script>
-
 @yield('js')
 
 </body>

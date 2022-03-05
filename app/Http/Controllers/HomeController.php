@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,12 +10,18 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('front.home');
+        $howes  = Home::where([['state',1],['reserved',0]])->get();
+        return view('front.home',compact('howes'));
     }
 
-    public function details()
+    public function details($id)
     {
-        return view('front.details');
+        $home = Home::find($id);
+        if($home){
+            return view('front.details',compact('home'));
+        }else{
+            return redirect()->back()->with(['error'=>'لا يوجد شقق']);
+        }
     }
 
 

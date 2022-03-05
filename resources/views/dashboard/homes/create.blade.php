@@ -62,7 +62,7 @@
                             {{-- floor --}}
                             <div class="form-group">
                                 <label>الدور (الطابق)</label>
-                                <input type="number" placeholder="اضافه الدور (الطابق)" name="floor"  class="form-control" required value="{{ old('floor') }}">
+                                <input type="number" min="1" placeholder="اضافه الدور (الطابق)" name="floor"  class="form-control" required value="{{ old('floor') }}">
                                 @error('floor')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -121,7 +121,7 @@
                             {{-- number_of_bathroom --}}
                             <div class="form-group">
                                 <label>عدد الحمامات</label>
-                                <input type="number" placeholder="عدد الحمامات" name="number_of_bathroom"  class="form-control" required value="{{ old('number_of_bathroom') }}">
+                                <input type="number" min="1" placeholder="عدد الحمامات" name="number_of_bathroom"  class="form-control" required value="{{ old('number_of_bathroom') }}">
                                 @error('number_of_bathroom')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -132,7 +132,7 @@
                             {{-- number_of_bedroom --}}
                             <div class="form-group">
                                 <label>عدد الغرف</label>
-                                <input type="number" placeholder="عدد الغرف" name="number_of_bedroom"  class="form-control" required value="{{ old('number_of_bedroom') }}">
+                                <input type="number" min="1" placeholder="عدد الغرف" name="number_of_bedroom"  class="form-control" required value="{{ old('number_of_bedroom') }}">
                                 @error('number_of_bedroom')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -144,7 +144,7 @@
                             {{-- number_of_beds --}}
                             <div class="form-group">
                                 <label>عدد السراير</label>
-                                <input type="number" placeholder="عدد السراير" name="number_of_beds"  class="form-control" required value="{{ old('number_of_beds') }}">
+                                <input type="number" min="1" placeholder="عدد السراير" name="number_of_beds"  class="form-control" required value="{{ old('number_of_beds') }}">
                                 @error('number_of_beds')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -155,7 +155,7 @@
                             {{-- home_space --}}
                             <div class="form-group">
                                 <label>مساحة الشقه/ بالمتر</label>
-                                <input type="number" placeholder="مساحة الشقه بالمتر" name="home_space"  class="form-control"  value="{{ old('home_space') }}">
+                                <input type="number" min="1" placeholder="مساحة الشقه بالمتر" name="home_space"  class="form-control"  value="{{ old('home_space') }}">
                                 @error('home_space')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -166,7 +166,7 @@
                             {{-- maximum_period --}}
                             <div class="form-group">
                                 <label>اقصي فتره زمنيه / بالايام</label>
-                                <input type="number" placeholder="قصي فتره زمنيه" name="maximum_period"  class="form-control"  value="{{ old('maximum_period') }}">
+                                <input type="number" min="1" placeholder="قصي فتره زمنيه" name="maximum_period"  class="form-control"  value="{{ old('maximum_period') }}">
                                 @error('maximum_period')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -182,7 +182,7 @@
                             {{-- price_for_home --}}
                             <div class="form-group">
                                 <label>سعر الشقه</label>
-                                <input type="number" placeholder="سعر الشقه" name="price_for_home"  class="form-control"  value="{{ old('price_for_home') }}">
+                                <input type="number" min="1" placeholder="سعر الشقه" name="price_for_home"  class="form-control"  value="{{ old('price_for_home') }}">
                                 @error('price_for_home')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -193,7 +193,7 @@
                             {{-- price_for_bedroom --}}
                             <div class="form-group">
                                 <label>سعر الغرفه</label>
-                                <input type="number" placeholder="سعر الغرفه" name="price_for_bedroom"  class="form-control"  value="{{ old('price_for_bedroom') }}">
+                                <input type="number" min="1" placeholder="سعر الغرفه" name="price_for_bedroom"  class="form-control"  value="{{ old('price_for_bedroom') }}">
                                 @error('price_for_bedroom')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
@@ -204,9 +204,20 @@
                             {{-- price_for_bed --}}
                             <div class="form-group">
                                 <label>سعر السرير</label>
-                                <input type="number" placeholder="سعر السرير" name="price_for_bed"  class="form-control"  value="{{ old('price_for_bed') }}">
+                                <input type="number" min="1" placeholder="سعر السرير" name="price_for_bed"  class="form-control"  value="{{ old('price_for_bed') }}">
                                 @error('price_for_bed')
                                 <div class="text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>{{-- end of col price_for_bed --}}
+
+                        <div class="col-md">
+                            {{-- price_for_bed --}}
+                            <div class="form-group">
+                                <label>سعر اليوم</label>
+                                <input type="number" min="1" placeholder="سعر اليوم" name="price_for_day"  class="form-control"  value="{{ old('price_for_day') }}">
+                                @error('price_for_day')
+                                    <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                         </div>{{-- end of col price_for_bed --}}

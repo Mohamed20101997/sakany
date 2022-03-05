@@ -10,7 +10,7 @@ class Home extends Model
 
     protected $fillable = ['country','city','rent_type','cover','address','description','floor' , 'number_of_bathroom'
                             ,'number_of_bedroom' ,'number_of_beds','home_space','maximum_period', 'price_for_home',
-                            'price_for_bedroom','price_for_bed','reserved','state','garage','owner_id'];
+                            'price_for_bedroom','price_for_bed','reserved','state','garage','owner_id','price_for_day'];
 
 
 
@@ -50,6 +50,17 @@ class Home extends Model
     //    Relation
     public function images(){
         return $this->hasMany(HomeImage::class , 'home_id' ,'id');
+    }
+
+
+    public function getRentTypeAttribute($value){
+       if($value == 'home'){
+           return 'شقه';
+       }elseif ($value == 'bed'){
+           return 'سرير';
+       }elseif ($value == 'period_of_time'){
+           return 'فتره زمنيه';
+       }
     }
 
 }

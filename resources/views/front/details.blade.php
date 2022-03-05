@@ -2,17 +2,19 @@
 
 @section('contain')
 
+
+
     <!--Page Title-->
-    <section class="page-title" style="background-image:url({{asset('front/images/background/6.jpg')}})">
+    <section class="page-title" style="background-image:url({{image_path($home->cover)}})">
         <div class="auto-container">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h1>Property Detail</h1>
+                    <h1>تفاصيل الشقه</h1>
                 </div>
                 <div class="pull-right">
                     <ul class="page-breadcrumb">
-                        <li><a href="{{route('home')}}">Home</a></li>
-                        <li>Property Detail</li>
+                        <li><a href="{{route('home')}}">الرئيسيه</a></li>
+                        <li>/ تفاصيل الشقه</li>
                     </ul>
                 </div>
             </div>
@@ -31,33 +33,34 @@
                         <div class="inner-box">
                             <!--Upper Box-->
                             <div class="upper-box">
-                                <h2>Gorgeous Farm in Myrtle</h2>
-                                <div class="location">New Yark</div>
+                                @php
+                                    $maximum_period  = 0;
+                                    if($home->rent_type == 'فتره زمنيه'){
+                                           $maximum_period = $home->maximum_period;
+                                    }
+                                @endphp
                                 <ul class="post-detail">
-                                    <li><span class="icon fa fa-calendar"></span>Year of Built</li>
-                                    <li><span class="icon fa fa-calendar"></span>July 14, 2017</li>
-                                    <li><span class="icon fa fa-map-marker"></span>Donceles 99, Centro Histórico, 06000 Centro, CDMX, Mexico</li>
+                                    <li><span class="fa fa-home"></span> {{$home->rent_type}}</li>
+                                    @if($maximum_period !=0)
+                                        <li><span class="fa fa-clock-o"></span> اقصي مده  : {{$home->maximum_period}} ايام </li>
+                                    @endif
+                                    <li><span class="icon fa fa-map-marker"></span>{{$home->address}} / {{$home->country}} / {{$home->city}}</li>
                                 </ul>
                             </div>
 
                             <!--Carousel Box-->
                             <div class="carousel-box">
                                 <div class="property-single-carousel owl-carousel owl-theme">
-                                    <div class="slide">
-                                        <div class="image">
-                                            <img src="{{asset('front')}}/images/resource/property-19.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="image">
-                                            <img src="{{asset('front')}}/images/resource/property-19.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="image">
-                                            <img src="{{asset('front')}}/images/resource/property-19.jpg" alt="" />
-                                        </div>
-                                    </div>
+                                    @if(count($home->images) > 0)
+                                        @foreach($home->images as $image)
+                                            <div class="slide">
+                                                <div class="image">
+                                                    <img src="{{image_path($home->cover)}}" alt="" />
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
                                 </div>
                             </div>
 

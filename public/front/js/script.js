@@ -1,16 +1,16 @@
 (function($) {
-	
+
 	"use strict";
-	
-	
+
+
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
 			$('.preloader').delay(200).fadeOut(500);
 		}
 	}
-	
-	
+
+
 	//Update Header Style and Scroll to Top
 	function headerStyle() {
 		if($('.main-header').length){
@@ -27,32 +27,32 @@
 			}
 		}
 	}
-	
+
 	headerStyle();
-	
-	
+
+
 	//Submenu Dropdown Toggle
 	if($('.main-header li.dropdown ul').length){
 		$('.main-header li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
-		
+
 		//Dropdown Button
 		$('.main-header li.dropdown .dropdown-btn').on('click', function() {
 			$(this).prev('ul').slideToggle(500);
 		});
-		
+
 		//Disable dropdown parent link
 		$('.main-header .navigation li.dropdown > a,.hidden-bar .side-menu li.dropdown > a').on('click', function(e) {
 			e.preventDefault();
 		});
 	}
-	
-	
+
+
 	//Tabs Box
 	if($('.tabs-box').length){
 		$('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $($(this).attr('data-tab'));
-			
+
 			if ($(target).is(':visible')){
 				return false;
 			}else{
@@ -65,22 +65,22 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Custom Seclect Box
 	if($('.custom-select-box').length){
 		$('.custom-select-box').selectmenu().selectmenu('menuWidget').addClass('overflow');
 	}
-	
-	
+
+
 	//Masonary
 	function simpleMasonry() {
 		if($('.masonry-items-container').length){
-	
+
 			var winDow = $(window);
 			// Needed variables
 			var $container=$('.masonry-items-container');
-	
+
 			$container.isotope({
 				itemSelector: '.masonry-item',
 				 masonry: {
@@ -91,10 +91,10 @@
 					easing:'linear'
 				}
 			});
-	
+
 			winDow.on('resize', function(){
 
-				$container.isotope({ 
+				$container.isotope({
 					itemSelector: '.masonry-item',
 					animationOptions: {
 						duration: 500,
@@ -105,19 +105,19 @@
 			});
 		}
 	}
-	
+
 	simpleMasonry();
-	
-	
+
+
 	//Sortable Masonary with Filters
 	function enableMasonry() {
 		if($('.sortable-masonry').length){
-	
+
 			var winDow = $(window);
 			// Needed variables
 			var $container=$('.sortable-masonry .items-container');
 			var $filter=$('.filter-btns');
-	
+
 			$container.isotope({
 				filter:'*',
 				 masonry: {
@@ -128,14 +128,14 @@
 					easing:'linear'
 				}
 			});
-			
-	
-			// Isotope Filter 
+
+
+			// Isotope Filter
 			$filter.find('li').on('click', function(){
 				var selector = $(this).attr('data-filter');
-	
+
 				try {
-					$container.isotope({ 
+					$container.isotope({
 						filter	: selector,
 						animationOptions: {
 							duration: 500,
@@ -144,16 +144,16 @@
 						}
 					});
 				} catch(err) {
-	
+
 				}
 				return false;
 			});
-	
-	
+
+
 			winDow.on('resize', function(){
 				var selector = $filter.find('li.active').attr('data-filter');
 
-				$container.isotope({ 
+				$container.isotope({
 					filter	: selector,
 					animationOptions: {
 						duration: 500,
@@ -162,10 +162,10 @@
 					}
 				});
 			});
-	
-	
+
+
 			var filterItemA	= $('.filter-btns li');
-	
+
 			filterItemA.on('click', function(){
 				var $this = $(this);
 				if ( !$this.hasClass('active')) {
@@ -175,10 +175,10 @@
 			});
 		}
 	}
-	
+
 	enableMasonry();
-	
-	
+
+
 	//Two Item Carousel
 	if ($('.two-item-carousel').length) {
 		$('.two-item-carousel').owlCarousel({
@@ -211,10 +211,10 @@
 					items:2
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//News Carousel
 	if ($('.news-carousel').length) {
 		$('.news-carousel').owlCarousel({
@@ -244,10 +244,10 @@
 					items:2
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Three Item Carousel
 	if ($('.three-item-carousel').length) {
 		$('.three-item-carousel').owlCarousel({
@@ -277,9 +277,9 @@
 					items:3
 				}
 			}
-		});    		
+		});
 	}
-	
+
 	//Agents Carousel
 	if ($('.agents-carousel').length) {
 		$('.agents-carousel').owlCarousel({
@@ -306,10 +306,10 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Single Item Carousel
 	if ($('.single-item-carousel').length) {
 		$('.single-item-carousel').owlCarousel({
@@ -336,10 +336,10 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//News Carousel
 	if ($('.News-carousel').length) {
 		$('.News-carousel').owlCarousel({
@@ -366,10 +366,10 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Property Single Carousel
 	if ($('.property-single-carousel').length) {
 		$('.property-single-carousel').owlCarousel({
@@ -396,10 +396,10 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
-	
+
 	// Sponsors Carousel
 	if ($('.sponsors-carousel').length) {
 		$('.sponsors-carousel').owlCarousel({
@@ -426,18 +426,18 @@
 					items:5
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Fact Counter + Text Count
 	if($('.count-box').length){
 		$('.count-box').appear(function(){
-	
+
 			var $t = $(this),
 				n = $t.find(".count-text").attr("data-stop"),
 				r = parseInt($t.find(".count-text").attr("data-speed"), 10);
-				
+
 			if (!$t.hasClass("counted")) {
 				$t.addClass("counted");
 				$({
@@ -455,11 +455,11 @@
 					}
 				});
 			}
-			
+
 		},{accY: 0});
 	}
-	
-	
+
+
 	//LightBox / Fancybox
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').fancybox({
@@ -470,8 +470,8 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Contact Form Validation
 	if($('#contact-form').length){
 		$('#contact-form').validate({
@@ -495,14 +495,14 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Gallery Filters
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
 	}
-	
-	
+
+
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").on('click', function() {
@@ -511,11 +511,11 @@
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1500);
-	
+
 		});
 	}
-	
-	
+
+
 	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
@@ -534,19 +534,19 @@
 /* ==========================================================================
    When document is Scrollig, do
    ========================================================================== */
-	
+
 	$(window).on('scroll', function() {
 		headerStyle();
 	});
-	
+
 /* ==========================================================================
    When document is loading, do
    ========================================================================== */
-	
+
 	$(window).on('load', function() {
 		handlePreloader();
 		enableMasonry();
 		simpleMasonry();
-	});	
+	});
 
 })(window.jQuery);

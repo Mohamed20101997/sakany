@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="{{asset('front/css/summernote.min.css')}}" rel="stylesheet">
 
     <style>
         .toggle-flip input[type="checkbox"] + .flip-indecator {
@@ -59,7 +60,8 @@
 <script src="{{ asset('dashboard_files/js/plugins/form-render.min.js') }}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+  <script src="{{asset('front/js/summernote.min.js')}}"></script>
 
 @stack('js')
 <script>
