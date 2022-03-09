@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>الصورة الشخصيه</label><br>
+                                <label>   </label><br>
                                 <label class="file center-block">
                                     <input type="file"  name="image">
                                     <span class="file-custom"></span>
