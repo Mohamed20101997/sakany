@@ -42,8 +42,8 @@ class HomeController extends Controller
             'number_of_beds'  => 'required',
             'owner_id'  => 'required|exists:owners,id',
         ]);
-        try{
 
+        try{
             DB::beginTransaction();
 
             if (!$request->has('state'))

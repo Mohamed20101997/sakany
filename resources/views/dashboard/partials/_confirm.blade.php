@@ -4,15 +4,15 @@
         e.preventDefault();
         var that = $(this);
         var n = new Noty({
-          text : 'Confirm deleting record',
+          text : 'تأكيد حذف السجل',
           killer : true,
           themes: 'relax',
           buttons:[
-            Noty.button('Yes', 'btn btn-success mr-2', function(){
+            Noty.button('نعم', 'btn btn-success mr-2', function(){
               that.closest('form').submit();
             }),
 
-            Noty.button('No', 'btn btn-danger', function(){
+            Noty.button('لا', 'btn btn-danger', function(){
               n.close();
             }),
           ]

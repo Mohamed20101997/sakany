@@ -89,7 +89,7 @@
                             {{-- state --}}
                             <div class="form-group">
                                 <div class="toggle-flip">
-                                    <label>حالة المالك</label> <br>
+                                    <label>حالة المستخدم</label> <br>
                                     <label><input type="checkbox" value="1" name="state" data-color="success" checked>
                                         <span class="flip-indecator" data-toggle-on="مفعله" data-toggle-off="غير مفعله"></span>
                                     </label>

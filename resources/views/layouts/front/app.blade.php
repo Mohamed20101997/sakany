@@ -85,7 +85,9 @@
 
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="{{route('front.logout')}}">خروج</a></li>
+                                                    <li>
+                                                        <a href="{{route('front.logout')}}">خروج</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -147,7 +149,9 @@
 
                                                 <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
-                                                <li><a href="{{route('front.logout')}}">خروج</a></li>
+                                                <li>
+                                                    <a href="{{route('front.logout')}}">خروج</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>

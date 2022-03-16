@@ -70,7 +70,7 @@ a,
 .news-block-six .inner-box .lower-content .post-meta li .icon,
 .blog-detail .inner-box .lower-content .post-share-options .tags a:hover,
 .news-block-five .inner-box .content-column .inner-column .post-meta li .icon{
-	color:#71b100;
+	color:#2b2d2f;
 }
 
 /*Background Color*/
@@ -112,7 +112,7 @@ a,
 .property-tabs-section .property-search-tab .property-tabs .tab-btns .tab-btn:hover,
 .property-tabs-section .property-search-tab .property-tabs .tab-btns .tab-btn.active-btn,
 .featured-block .inner-box .image a.wishlist{
-	background-color:#71b100;
+	background-color:#2b2d2f;
 }
 
 
@@ -171,23 +171,23 @@ a,
 .contact-form textarea:focus,
 .map-section .google-map,
 .property-tabs-section .property-search-tab .property-tabs .tab-btns .tab-btn{
-	border-color:#71b100;
+	border-color:#2b2d2f;
 }
 
 .featured-block .inner-box .image a.wishlist:before{
-	border-bottom:12px solid #71b100;	
+	border-bottom:12px solid #2b2d2f;
 }
 
 .featured-block .inner-box .image a.wishlist:after{
-	border-top:12px solid #71b100;	
+	border-top:12px solid #2b2d2f;
 }
 
 .main-slider .sales-box .inner-box .detail:before{
-	border-bottom-color:#71b100;
+	border-bottom-color:#2b2d2f;
 }
 
 .property-box .inner-box .outer-icon:after{
-	border-left-color:#71b100;
+	border-left-color:#2b2d2f;
 }
 
 /*RGBA Color Light*/
@@ -205,11 +205,11 @@ a,
 }
 
 @media only screen and (max-width: 767px){
-	
+
 	.main-menu .navbar-header .navbar-toggle{
-		border-color:#71b100;
+		border-color:#2b2d2f;
 	}
-	
+
 	.main-menu .navbar-header .navbar-toggle,
 	.main-menu .navbar-collapse > .navigation,
 	.main-menu .navbar-collapse > .navigation > li > ul,
@@ -226,7 +226,7 @@ a,
 	.main-menu .navbar-collapse > .navigation > li.current > a,
 	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
 	.header-style-two.inner-header .main-menu .navigation > li > a{
-		background-color:#71b100;
+		background-color:#2b2d2f;
 	}
-	
+
 }

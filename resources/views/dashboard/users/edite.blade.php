@@ -6,7 +6,7 @@
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الصفحة الرئيسيه</a></li>
         <li class="breadcrumb-item"><a href="{{ route('user.index') }}">المستخدمين</a></li>
-        <li class="breadcrumb-item" active>Edit</li>
+        <li class="breadcrumb-item" active>تعديل</li>
     </ul>
 
 
@@ -87,7 +87,7 @@
                             {{-- state --}}
                             <div class="form-group">
                                 <div class="toggle-flip">
-                                    <label>حالة المالك</label> <br>
+                                    <label>حالة المستخدم</label> <br>
                                     <label><input type="checkbox" value="1" name="state" data-color="success" {{$user->state == 1 ? 'checked' : ''}}>
                                         <span class="flip-indecator" data-toggle-on="مفعله" data-toggle-off="غير مفعله"></span>
                                     </label>

@@ -14,7 +14,6 @@ class Home extends Model
                             'price_for_bedroom','price_for_bed','reserved','state','garage','owner_id','price_for_day'];
 
 
-
     public function scopeWhenSearch($query , $search)
     {
         return $query->when($search , function($q) use ($search){
