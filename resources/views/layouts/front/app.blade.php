@@ -124,6 +124,7 @@
 
                                         @if(auth()->guard('owner')->check())
                                             <li><a href="{{route('add_home.index')}}">إضافة شقه</a></li>
+                                            <li><a href="{{route('show_reserved')}}">طلبات الحجز</a></li>
                                         @endif
 
                                     @else
@@ -192,6 +193,7 @@
 
                                     @if(auth()->guard('owner')->check())
                                         <li><a href="{{route('add_home.index')}}">إضافة شقه</a></li>
+                                        <li><a href="{{route('show_reserved')}}">طلبات الحجز</a></li>
                                     @endif
 
                                 @else

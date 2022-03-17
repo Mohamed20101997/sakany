@@ -10,7 +10,7 @@ class guestfront
     public function handle($request, Closure $next)
     {
         if( \Auth::guard('user')->check() || \Auth::guard('owner')->check() ){
-            return redirect()->intended('/');
+            return redirect(url('/'));
         }
         return $next($request);
 

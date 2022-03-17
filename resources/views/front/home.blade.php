@@ -79,7 +79,7 @@
                                                 <div class="form-group col-md-3 col-sm-4 col-xs-12">
                                                     <label class="field-label">الدور</label>
                                                     <select class="custom-select-box" name="floor">
-                                                        <option value="">Any</option>
+                                                        <option value="">اختر</option>
                                                         @if(count(getDistaincat('floor')) > 0)
                                                             @foreach( getDistaincat('floor') as $floor)
                                                                 <option value="{{$floor}}" {{request('floor') == $floor ? 'selected' : ''}}>{{$floor}}</option>

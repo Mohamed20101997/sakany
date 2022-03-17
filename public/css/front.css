@@ -21,3 +21,24 @@
 }
 
 
+
+.page-wrapper{
+    position: unset;
+    margin: 0;
+    width: 100%;
+    min-width: 300px;
+    min-height: 100%;
+}
+
+
+.main-footer{
+    display: none;
+}
+
+body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}

@@ -268,7 +268,7 @@
 
                         <hr class="mt-4 mb-4">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>تحديث</button>
+                            <button type="submit" class="btn btn-primary" id="home_btn"><i class="fa fa-edit pr-2"></i>  تحديث </button>
                         </div>
                     </form>
 
