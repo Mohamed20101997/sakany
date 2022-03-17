@@ -221,7 +221,7 @@ class HomeController extends Controller
             DB::commit();
 
             session()->flash('success', 'تم الحذف بنجاح');
-            return redirect()->route('owner.index');
+            return redirect()->route('home.index');
 
         }catch(\Exception $e){
             DB::rollback();

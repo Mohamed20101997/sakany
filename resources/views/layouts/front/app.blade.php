@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+@php
+
+    if(auth()->guard('user')->check()){
+        $name = auth()->guard('user')->user()->name;
+
+        if(!empty(auth()->guard('user')->user()->image)){
+            $img = auth()->guard('user')->user()->image;
+        }else{
+            $img = 'user.png';
+        }
+
+
+    }elseif (auth()->guard('owner')->check()){
+        $name = auth()->guard('owner')->user()->name;
+
+        if(!empty(auth()->guard('user')->user()->image)){
+            $img = auth()->guard('user')->user()->image;
+        }else{
+            $img = 'user.png';
+        }
+    }
+
+@endphp
+
+    <!DOCTYPE html>
 <html dir="rtl">
 
 <head>
@@ -7,9 +31,12 @@
     <!-- Stylesheets -->
     <link href="{{asset('front')}}/css/bootstrap.css" rel="stylesheet">
     <link href="{{asset('front')}}/css/bootstrap.rtl.full.min.css" rel="stylesheet">
-    <link href="{{asset('front')}}/plugins/revolution/css/settings.css" rel="stylesheet" type="text/css"><!-- REVOLUTION SETTINGS STYLES -->
-    <link href="{{asset('front')}}/plugins/revolution/css/layers.css" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
-    <link href="{{asset('front')}}/plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
+    <link href="{{asset('front')}}/plugins/revolution/css/settings.css" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION SETTINGS STYLES -->
+    <link href="{{asset('front')}}/plugins/revolution/css/layers.css" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION LAYERS STYLES -->
+    <link href="{{asset('front')}}/plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{asset('front')}}/css/owl.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{asset('front')}}/css/style.css" rel="stylesheet">
     <link href="{{asset('front')}}/css/responsive.css" rel="stylesheet">
@@ -27,9 +54,12 @@
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
-    @yield('css')
+    <link rel="stylesheet"  href="{{ asset('front/fonts/font600.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
 
-    <!-- Responsive -->
+@yield('css')
+
+<!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
@@ -50,7 +80,8 @@
                 <div class="outer-container clearfix">
                     <!--Logo Box-->
                     <div class="logo-box">
-                        <div class="logo"><a href="{{route('home')}}"><img src="{{asset('front/images/logo4.png')}}"></a></div>
+                        <div class="logo"><a href="{{route('home')}}"><img
+                                    src="{{asset('front/images/logo4.png')}}"></a></div>
 
                     </div>
 
@@ -61,7 +92,8 @@
                         <nav class="main-menu">
                             <div class="navbar-header">
                                 <!-- Toggle Button -->
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                        data-target=".navbar-collapse">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -74,32 +106,31 @@
 
                                     @if(auth()->guard('user')->check() || auth()->guard('owner')->check())
 
-                                        <li>
-                                            <div class="dropdown">
-                                                <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
-                                                    @if(auth()->guard('user')->check())
-                                                        {{auth()->guard('user')->user()->name}}
-                                                    @elseif(auth()->guard('owner')->check())
-                                                        {{auth()->guard('owner')->user()->name}}
-                                                    @endif
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                                               aria-expanded="false">
+                                                <span>{{$name}}</span>
 
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a href="{{route('front.logout')}}">خروج</a>
-                                                    </li>
-                                                </ul>
+                                                <img src="{{image_path($img)}}" class="rounded-circle"
+                                                     style="border-radius:50%; width: 40px; height: 40px">
+
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+                                                 style="text-align: center;">
+                                                <a class="dropdown-item" href="{{route('front.logout')}}">خروج</a>
                                             </div>
                                         </li>
+
                                         @if(auth()->guard('owner')->check())
-                                            <li><a href="#">إضافة شقه</a></li>
+                                            <li><a href="{{route('add_home.index')}}">إضافة شقه</a></li>
                                         @endif
 
                                     @else
                                         <li><a href="{{route('front.login')}}">دخول</a></li>
                                         <li><a href="{{route('front.register')}}">حساب جديد</a></li>
                                     @endif
-                                        <li><a href="{{route('home')}}">الرئيسيه</a></li>
+                                    <li><a href="{{route('home')}}">الرئيسيه</a></li>
                                 </ul>
 
                             </div>
@@ -118,7 +149,8 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="{{route('home')}}" class="img-responsive"><img src="{{asset('front')}}/images/logo6.png" style="width: 40%;" alt="" title=""></a>
+                    <a href="{{route('home')}}" class="img-responsive"><img src="{{asset('front')}}/images/logo6.png"
+                                                                            style="width: 40%;" alt="" title=""></a>
                 </div>
 
                 <!--Right Col-->
@@ -127,7 +159,8 @@
                     <nav class="main-menu">
                         <div class="navbar-header">
                             <!-- Toggle Button -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -135,28 +168,30 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix">
+
                             <ul class="navigation clearfix">
                                 @if(auth()->guard('user')->check() || auth()->guard('owner')->check())
 
-                                    <li>
-                                        <div class="dropdown">
-                                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
-                                                @if(auth()->guard('user')->check())
-                                                    {{auth()->guard('user')->user()->name}}
-                                                @elseif(auth()->guard('owner')->check())
-                                                    {{auth()->guard('owner')->user()->name}}
-                                                @endif
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            <span>{{$name}}</span>
 
-                                                <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="{{route('front.logout')}}">خروج</a>
-                                                </li>
-                                            </ul>
+                                            <img src="{{image_path($img)}}" class="rounded-circle"
+                                                 style="border-radius:50%; width: 40px; height: 40px">
+
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+                                             style="text-align: center;">
+                                            <a class="dropdown-item" href="{{route('front.logout')}}">خروج</a>
                                         </div>
                                     </li>
+
+
+
                                     @if(auth()->guard('owner')->check())
-                                        <li><a href="#">إضافة شقه</a></li>
+                                        <li><a href="{{route('add_home.index')}}">إضافة شقه</a></li>
                                     @endif
 
                                 @else
@@ -178,9 +213,9 @@
 
 @include('dashboard.partials._confirm')
 @include('dashboard.partials._sessions')
-   @yield('contain')
+@yield('contain')
 
-    <!--Main Footer-->
+<!--Main Footer-->
     <footer class="main-footer" style="background-image:url('../front/images/background/2.jpg')">
         <div class="footer-bottom">
             <div class="auto-container">

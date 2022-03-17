@@ -14,7 +14,7 @@
 					</span>
                 </div>
 
-                <form class="login100-form validate-form" action="{{route('front.register_post')}}" method="post"
+                <form class="login100-form validate-form" action="{{route('front.register')}}" method="post"
                       enctype="multipart/form-data">
                     @csrf
                     @method('post')
@@ -51,12 +51,12 @@
                         @enderror
                     </div>
 
-                    <div class="wrap-input100 validate-input m-b-18" data-validate="الصورة الشخصيه  مطلوب">
+                    <div class="wrap-input100 m-b-18">
                         <span class="label-input100">الصورة الشخصيه </span>
                         <input class="input100" type="file" name="image" placeholder="ادخال الصورة الشخصيه ">
                         <span class="focus-input100"></span>
                         @error('image')
-                        <div class="text-danger">{{$message}}</div>
+                            <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
 

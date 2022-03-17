@@ -14,7 +14,7 @@
 					</span>
                 </div>
 
-                <form class="login100-form validate-form" action="{{route('front.login_post')}}" method="post">
+                <form class="login100-form validate-form" action="{{route('front.login')}}" method="post">
                     @csrf
                     @method('post')
                     @include('dashboard.partials._errors')

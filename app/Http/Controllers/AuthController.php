@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
-        return view('front.login');
-    }
+        if($request->isMethod('get')){
+            return view('front.login');
+        }
 
-    public function login_post(Request $request)
-    {
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -27,22 +26,22 @@ class AuthController extends Controller
             $guard = auth()->guard('user');
         }
 
+
         if ($guard->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], true)) {
+
             return redirect()->back();
         }
 
-
         return redirect()->back()->with(['error' => 'الرقم السري او البرد الالكتروني غير صحيحين']);
+
     }
 
 
-    public function register()
+    public function register(Request $request)
     {
-        return view('front.register');
-    }
-
-    public function register_post(Request $request)
-    {
+        if($request->isMethod('get')) {
+            return view('front.register');
+        }
 
         if ($request->has('owner')) {
             $request->validate([
@@ -73,42 +72,40 @@ class AuthController extends Controller
         }
 
         try{
-        $data = $request->except('_token');
+            $data = $request->except('_token');
 
-        $data['state'] = 1;
+            $data['state'] = 1;
 
-        if (!empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        }
-
-
-        if ($request->has('image')) {
-            $data['image'] = uploadImage('public_uploads', $request->file('image'));
-        }
-
-        if ($request->has('owner')) {
-            if ($request->has('id_image')) {
-                $data['id_image'] = uploadImage('public_uploads', $request->file('id_image'));
+            if (!empty($data['password'])) {
+                $data['password'] = bcrypt($data['password']);
             }
-        }
 
 
-        if ($request->has('owner')) {
-            Owners::create($data);
-        } else {
-            Users::create($data);
-        }
+            if ($request->has('image')) {
+                $data['image'] = uploadImage('public_uploads', $request->file('image'));
+            }
+
+            if ($request->has('owner')) {
+                if ($request->has('id_image')) {
+                    $data['id_image'] = uploadImage('public_uploads', $request->file('id_image'));
+                }
+            }
 
 
-        session()->flash('success', 'تم إنشاء الحساب بنجاح');
+            if ($request->has('owner')) {
+                Owners::create($data);
+            } else {
+                Users::create($data);
+            }
 
-        return redirect()->route('front.login');
+
+            session()->flash('success', 'تم إنشاء الحساب بنجاح');
+
+            return redirect()->route('front.login');
 
         }catch(\Exception $e){
             return redirect()->back()->with(['error'=>'هناك مشكله']);
         }
-
-
     }
 
 
@@ -121,6 +118,10 @@ class AuthController extends Controller
         }
 
         $guard->logout();
+
+        if(session()->has('homeId')) {
+            \Session::forget('homeId');
+        }
         return redirect()->route('front.login');
     }
 

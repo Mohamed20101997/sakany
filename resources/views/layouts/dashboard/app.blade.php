@@ -79,6 +79,7 @@
         width: '100%'
     });
 </script>
+
 <script>
     $(document).ready(function() {
         $('#summernote ,#summernote1 ,#summernote2').summernote({

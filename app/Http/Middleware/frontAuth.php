@@ -28,7 +28,6 @@ class frontAuth
             }
 
         }else{
-
             if(\Auth::guard($guard)->check()){
                 return $next($request);
             }else{

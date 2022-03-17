@@ -1,14 +1,12 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.front.app')
 
-@section('content')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/front.css') }}">
+@endsection
+@section('contain')
 
+    <main class="app-content">
     <h1>الشقق</h1>
-
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الصفحه الرئيسيه </a></li>
-        <li class="breadcrumb-item" active>الشقق</li>
-    </ul>
-
 
     <div class="row">
         <div class="col-md-12">
@@ -24,7 +22,7 @@
 
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
-                            <a href="{{ route('home.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                            <a href="{{ route('add_home.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
                         </div> <!-- end of col 12 -->
 
                     </div> <!-- end of row -->
@@ -38,7 +36,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>صورة</th>
-                                        <th>المالك</th>
                                         <th>البلد</th>
                                         <th>المدينه</th>
                                         <th>الدور (الطابق)</th>
@@ -59,7 +56,6 @@
                                             <td>{{ $index+1 }}</td>
 
                                             <td><img src="{{image_path($home->cover)}}" width="60px" class="img-thumbnail"> </td>
-                                            <td>{{$home->owner->name}}</td>
                                             <td>{{$home->country}}</td>
                                             <td>{{$home->city}}</td>
                                             <td><span class="badge badge-danger p-2">{{$home->floor}}</span> </td>
@@ -78,8 +74,9 @@
                                             </td>
 
                                             <td>
-                                                <a href="{{ route('home.edit', $home->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                                <form method="post" action={{ route('home.destroy', $home->id)}} style="display:inline-block">
+                                                <a href="{{ route('add_home.edit', $home->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('details', $home->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                <form method="post" action={{ route('add_home.destroy', $home->id)}} style="display:inline-block">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i></button>
@@ -91,7 +88,6 @@
                                 </table>
                             </div>
                             {{ $homes->appends(request()->query())->links() }}
-
                         @else
                             <h3 class="alert alert-info text-center d-flex justify-content-center" style="margin: 0 auto; font-weight: 400"><i class="fa fa-exclamation-triangle"></i> لا يوجد اي بيانات للعرض</h3>
                         @endif
@@ -102,4 +98,36 @@
 
         </div> {{-- end of col  --}}
     </div> {{-- end of row  --}}
+
+    </main>
 @endsection
+@section('js')
+    <script>
+        $(document).ready(function(){
+            $(document).on('click','.delete',function(e){
+                e.preventDefault();
+                var that = $(this);
+                var n = new Noty({
+                    text : 'تأكيد حذف السجل',
+                    killer : true,
+                    themes: 'relax',
+                    buttons:[
+                        Noty.button('نعم', 'btn btn-success mr-2', function(){
+                            that.closest('form').submit();
+                        }),
+
+                        Noty.button('لا', 'btn btn-danger', function(){
+                            n.close();
+                        }),
+                    ]
+                });
+                n.show();
+
+            });
+
+        });
+    </script>
+
+@endsection
+
+

@@ -1,0 +1,23 @@
+
+.app-content{
+    margin: 50px;
+    color: #292929;
+    font-size: 17px;
+}
+.app-content_create{
+    margin: 30px 150px;
+    background: #f3f3f3;
+    border: 2px solid;
+    padding: 48px;
+    color: #292929;
+    font-size: 17px;
+}
+
+.app-content_create #home_btn
+{
+    width: 50%;
+    font-size: 20px;
+    margin: 0 25%;
+}
+
+

@@ -205,9 +205,9 @@
                                     <!--Image Column-->
                                     <div class="col-md-5 col-sm-5 col-xs-12">
                                         @if(auth()->guard('user')->check())
-                                            <a href="{{route('front.reserve')}}" class="btn btn-success" style="font-size:20px"> <i class="fa fa-check-square-o" aria-hidden="true"> </i>طلب حجز</a>
+                                            <a href="{{route('front.reserve')}}" class="btn btn-success" style="font-size:20px"> <i class="fa fa-check-square-o" aria-hidden="true"> </i>طلب حجز </a>
                                         @else
-                                            <a href="{{route('front.login')}}" class="btn btn-success" style="font-size:20px"> <i class="fa fa-check-square-o" aria-hidden="true"> </i>طلب حجز</a>
+                                            <a href="{{route('front.login')}}" class="btn btn-success" style="font-size:20px"> <i class="fa fa-check-square-o" aria-hidden="true"> </i> طلب حجز </a>
                                         @endif
 
                                     </div>
