@@ -8,13 +8,11 @@
         }else{
             $img = 'user.png';
         }
-
-
     }elseif (auth()->guard('owner')->check()){
         $name = auth()->guard('owner')->user()->name;
 
-        if(!empty(auth()->guard('user')->user()->image)){
-            $img = auth()->guard('user')->user()->image;
+        if(!empty(auth()->guard('owner')->user()->image)){
+            $img = auth()->guard('owner')->user()->image;
         }else{
             $img = 'user.png';
         }

@@ -25,6 +25,7 @@
                                         <th>المدينه</th>
                                         <th>الدور(الطابق)</th>
                                         <th>الاسم</th>
+                                        <th>الهاتف</th>
                                         <th>البريد الالكتروني</th>
                                         <th>الصورة الشخصيه</th>
                                         <th>العمر</th>
@@ -43,7 +44,7 @@
                                             <td>{{$reserve->home->city}}</td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->home->floor}}</span> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->name}}</span> </td>
-                                            <td><span class="badge badge-danger p-2">{{$reserve->user->phone}}</span> </td>
+                                            <td><span class="badge badge-danger p-2">{{$reserve->user->mobile }}</span> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->email}}</span> </td>
                                             <td><img src="{{image_path($reserve->user->image)}}" width="60px" class="img-thumbnail"> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->age}}</span> </td>
