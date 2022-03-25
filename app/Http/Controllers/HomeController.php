@@ -11,14 +11,12 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $howes  = Home::where([['state',1],['reserved',0]])->
         WhenSearch(Request()->country)->
         WhenSearch(Request()->city)->
         WhenSearch(Request()->floor)->
         WhenSearch(Request()->rent_type)->
-        WhenSearch(Request()->garage)->
-        get();
+        WhenSearch(Request()->garage)->get();
         return view('front.home',compact('howes'));
     }
 

@@ -24,6 +24,9 @@
         <form class="login-form" method="POST" action="{{route('login')}}">
             @csrf
             @method('POST')
+            @if($errors->any())
+                <p class="alert alert-danger" style="position: absolute;    top: -25px;">{{$errors->first()}}</p>
+            @endif
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>تسجيل دخول</h3>
             <div class="form-group">
                 <label class="control-label login_label" >البريد الالكتروني</label>

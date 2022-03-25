@@ -16,6 +16,7 @@ class Home extends Model
 
     public function scopeWhenSearch($query , $search)
     {
+
         return $query->when($search , function($q) use ($search){
             return $q->where('country' , 'like' , "%$search%")
                 ->orWhere('city' , 'like' , "%$search%")
@@ -26,6 +27,8 @@ class Home extends Model
                 ->orWhere('number_of_bedroom' , 'like' , "%$search%")
                 ->orWhere('number_of_beds' , 'like' , "%$search%");
         });
+
+
 
     } //end of scopeWhenSearch
 
