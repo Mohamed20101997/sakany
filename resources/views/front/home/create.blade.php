@@ -2,6 +2,13 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/front.css') }}">
+     <style>
+        @media only screen and (max-width:1000px) {
+            .app-content_create{
+                margin: 0 !important;
+            }
+        }
+    </style>
 @endsection
 @section('contain')
     <main class="app-content_create">

@@ -2,6 +2,13 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/front.css') }}">
+    <style>
+        @media only screen and (max-width:1000px) {
+            .app-content{
+                margin: 10px !important;
+            }
+        }
+    </style>
 @endsection
 @section('contain')
 
@@ -28,7 +35,7 @@
                     </div> <!-- end of row -->
                 </form> <!-- end of form -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div>
                         @if ($homes->count() > 0)
                             <div class="table-responsive">
                                 <table class="table table-hover">
@@ -55,7 +62,7 @@
                                         <tr>
                                             <td>{{ $index+1 }}</td>
 
-                                            <td><img src="{{image_path($home->cover)}}" width="60px" class="img-thumbnail"> </td>
+                                            <td><img src="{{image_path($home->cover)}}" width="60px" style="height: 60px;" class="img-thumbnail"> </td>
                                             <td>{{$home->country}}</td>
                                             <td>{{$home->city}}</td>
                                             <td><span class="badge badge-danger p-2">{{$home->floor}}</span> </td>

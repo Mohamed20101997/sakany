@@ -2,6 +2,13 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/front.css') }}">
+       <style>
+        @media only screen and (max-width:1000px) {
+            .app-content{
+                margin: 10px !important;
+            }
+        }
+    </style>
 @endsection
 @section('contain')
 
@@ -39,14 +46,14 @@
                                         <tr>
                                             <td>{{ $index+1 }}</td>
 
-                                            <td><img src="{{image_path($reserve->home->cover)}}" width="60px" class="img-thumbnail"> </td>
+                                            <td><img src="{{image_path($reserve->home->cover)}}" width="60px" style="height: 60px;" class="img-thumbnail"> </td>
                                             <td>{{$reserve->home->country}}</td>
                                             <td>{{$reserve->home->city}}</td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->home->floor}}</span> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->name}}</span> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->mobile }}</span> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->email}}</span> </td>
-                                            <td><img src="{{image_path($reserve->user->image)}}" width="60px" class="img-thumbnail"> </td>
+                                            <td><img src="{{image_path($reserve->user->image)}}" width="60px" style="height: 60px;" class="img-thumbnail"> </td>
                                             <td><span class="badge badge-danger p-2">{{$reserve->user->age}}</span> </td>
                                             <td>
                                                 <form method="post" action={{ route('delete_reserved', $reserve->id)}} style="display:inline-block">

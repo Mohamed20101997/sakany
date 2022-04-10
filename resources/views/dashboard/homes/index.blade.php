@@ -58,7 +58,7 @@
                                         <tr>
                                             <td>{{ $index+1 }}</td>
 
-                                            <td><img src="{{image_path($home->cover)}}" width="60px" class="img-thumbnail"> </td>
+                                            <td><img src="{{image_path($home->cover)}}" width="60px"  class="img-thumbnail" style="height: 60px;"> </td>
                                             <td>{{$home->owner->name}}</td>
                                             <td>{{$home->country}}</td>
                                             <td>{{$home->city}}</td>

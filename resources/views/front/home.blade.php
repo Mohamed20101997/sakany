@@ -133,7 +133,8 @@
                             <div class="inner-box">
                                 <div class="image">
                                     <a href="{{route('details', $home->id)}}">
-                                        <img src="{{image_path($home->cover)}}" alt=""/></a>
+                                        <img src="{{image_path($home->cover)}}" alt="" style="height: 240px;">
+                                    </a>
                                     @php
                                         $price = 0;
                                         $maximum_period  = 0;
