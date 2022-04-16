@@ -52,10 +52,10 @@
                                 {{-- rent_type --}}
                                 <div class="form-group">
                                     <label>نوع الايجار</label>
-                                    <select class="form-control select2" name="rent_type" required>
-                                        <option value="home" {{old('rent_type', $home->rent_type) == 'home' ? 'selected' : ''}}>شقه</option>
-                                        <option value="bed" {{old('rent_type', $home->rent_type) == 'bed' ? 'selected' : ''}}>سرير</option>
-                                        <option value="period_of_time" {{old('rent_type', $home->rent_type) == 'period_of_time' ? 'selected' : ''}}>فتره زمنيه</option>
+                                    <select class="form-control select2" name="rent_type" required id="rent_type">
+                                        <option value="home" {{old('rent_type', $home->rent_type) == 'شقه' ? 'selected' : ''}}>شقه</option>
+                                        <option value="bed" {{old('rent_type', $home->rent_type) == 'سرير' ? 'selected' : ''}}>سرير</option>
+                                        <option value="period_of_time" {{old('rent_type', $home->rent_type) == 'فتره زمنيه' ? 'selected' : ''}}>فتره زمنيه</option>
                                     </select>
 
                                     @error('rent_type')
@@ -188,7 +188,7 @@
                                 {{-- price_for_home --}}
                                 <div class="form-group">
                                     <label>سعر الشقه</label>
-                                    <input type="number" min="1" placeholder="سعر الشقه" name="price_for_home"  class="form-control"  value="{{ old('price_for_home',$home->price_for_home) }}">
+                                    <input type="number" min="1" placeholder="سعر الشقه" name="price_for_home" id="price_for_home"  class="form-control"  value="{{ old('price_for_home',$home->price_for_home) }}">
                                     @error('price_for_home')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
@@ -199,7 +199,7 @@
                                 {{-- price_for_bedroom --}}
                                 <div class="form-group">
                                     <label>سعر الغرفه</label>
-                                    <input type="number" min="1" placeholder="سعر الغرفه" name="price_for_bedroom"  class="form-control"  value="{{ old('price_for_bedroom',$home->price_for_bedroom) }}">
+                                    <input type="number" min="1" placeholder="سعر الغرفه" name="price_for_bedroom" id="price_for_bedroom"  class="form-control"  value="{{ old('price_for_bedroom',$home->price_for_bedroom) }}">
                                     @error('price_for_bedroom')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
@@ -210,7 +210,7 @@
                                 {{-- price_for_bed --}}
                                 <div class="form-group">
                                     <label>سعر السرير</label>
-                                    <input type="number" min="1" placeholder="سعر السرير" name="price_for_bed"  class="form-control"  value="{{ old('price_for_bed',$home->price_for_bed) }}">
+                                    <input type="number" min="1" placeholder="سعر السرير" name="price_for_bed" id="price_for_bed"  class="form-control"  value="{{ old('price_for_bed',$home->price_for_bed) }}">
                                     @error('price_for_bed')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
@@ -221,7 +221,7 @@
                                 {{-- price_for_day --}}
                                 <div class="form-group">
                                     <label>سعر اليوم</label>
-                                    <input type="number" min="1" placeholder="سعر اليوم" name="price_for_day"  class="form-control"  value="{{ old('price_for_day',$home->price_for_day) }}">
+                                    <input type="number" min="1" placeholder="سعر اليوم" name="price_for_day" id="price_for_day"  class="form-control"  value="{{ old('price_for_day',$home->price_for_day) }}">
                                     @error('price_for_day')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
@@ -287,4 +287,52 @@
     </main>
 @endsection
 
+@section('js')
+    <script>
+        $(document).ready(function() {
+            var rent_type = $('#rent_type  option:selected').val()
+            var price_for_home = $('#price_for_home')
+            var price_for_day = $('#price_for_day')
+            var price_for_bed = $('#price_for_bed')
 
+
+            if(rent_type == 'home'){
+                price_for_home.prop('required',true)
+            }else if(rent_type == 'bed'){
+                price_for_bed.prop('required',true);
+            }else if(rent_type == 'period_of_time'){
+                price_for_day.prop('required',true);
+            }
+
+            $('#rent_type').on('change', function() {
+
+                if (this.value == 'home') {
+                    var att = price_for_home.attr('required')
+                    if (typeof att === 'undefined') {
+                        price_for_home.prop('required',true)
+                        price_for_day.removeAttr('required');
+                        price_for_bed.removeAttr('required');
+                    }
+                }else if(this.value == 'bed'){
+                    var att = price_for_bed.attr('required')
+
+                    if (typeof att === 'undefined') {
+                        price_for_bed.prop('required',true);
+                        price_for_day.removeAttr('required');
+                        price_for_home.removeAttr('required')
+                    }
+                }else if(this.value == 'period_of_time'){
+                    var att = price_for_day.attr('required')
+
+                    if (typeof att === 'undefined') {
+                        price_for_day.prop('required',true);
+                        price_for_bed.removeAttr('required');
+                        price_for_home.removeAttr('required')
+                    }
+                }
+
+            });
+
+        });
+    </script>
+@endsection

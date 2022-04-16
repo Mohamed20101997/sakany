@@ -116,9 +116,6 @@
                                 <label>تاكيد الرقم السري</label>
                                 <input type="password" name="password_confirmation" placeholder="ادخال الرقم السري"
                                      class="form-control">
-                                @error('password')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
                             </div>
                         </div>{{-- end of col Password confirmation --}}
 

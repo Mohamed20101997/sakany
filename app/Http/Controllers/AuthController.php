@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Owners;
 use App\Models\Users;
+use App\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -22,18 +23,23 @@ class AuthController extends Controller
 
         if ($request->has('owner')) {
             $guard = auth()->guard('owner');
+            $auth = Owners::where('email', $request->email)->first();
         } else {
             $guard = auth()->guard('user');
+            $auth = Users::where('email', $request->email)->first();
         }
 
 
-        if ($guard->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], true)) {
+        if($auth->state == 0){
+            return redirect()->back()->with(['error' => 'تم ايقاف الحساب الخاص بك']);
 
-            return redirect()->back();
+        }else{
+
+            if ($guard->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], true)) {
+                return redirect()->back();
+            }
+            return redirect()->back()->with(['error' => 'الرقم السري او البرد الالكتروني غير صحيحين']);
         }
-
-        return redirect()->back()->with(['error' => 'الرقم السري او البرد الالكتروني غير صحيحين']);
-
     }
 
 
